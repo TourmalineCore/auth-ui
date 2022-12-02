@@ -2,8 +2,8 @@
 {{.Release.Name}}
 {{- end -}}
 
-{{- define "tradehack-ui.image-url" -}}
-registry.gitlab.com/benalitique/tradehack/tradehack-ui{{ if ne (trunc 1 (.Values.imageTag | default "latest" | toString )) "@" }}:{{end}}{{ .Values.imageTag | default "latest" | toString }}
+{{- define "auth-ui.image-url" -}}
+ghcr.io/tourmalinecore/inner-circle/dev-auth-ui{{ if ne (trunc 1 (.Values.imageTag | default "latest" | toString )) "@" }}:{{end}}{{ .Values.imageTag | default "latest" | toString }}
 {{- end -}}
 
 {{- define "imagePullSecret" }}
