@@ -2,7 +2,7 @@
   "name": "inner-circle-auth",
   "version": "0.0.1",
   "private": true,
-  "homepage": "",
+  "homepage": "./",
   "scripts": {
     "start": "run-s create-config:dev start-devserver",
     "start:local": "run-s create-config:local start-devserver",
