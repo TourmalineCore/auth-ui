@@ -24,5 +24,4 @@ yarn-error.log*
 
 .eslintcache
 
-.config-local
 env-config.js

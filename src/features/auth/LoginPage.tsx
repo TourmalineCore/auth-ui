@@ -1,7 +1,6 @@
 import {
   useContext, useState, useEffect, ChangeEvent, FormEvent,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { Input } from '@tourmalinecore/react-tc-ui-kit';
 import LoginForm from './components/LoginForm/LoginForm';
@@ -12,8 +11,6 @@ function LoginPage() {
   // @ts-ignore
   const [isAuthenticated] = useContext(authService.AuthContext);
 
-  const history = useNavigate();
-
   const [formData, setFormData] = useState({
     login: '',
     password: '',
@@ -22,7 +19,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      history('/');
+      window.location.href = '/';
     }
   }, [isAuthenticated]);
 

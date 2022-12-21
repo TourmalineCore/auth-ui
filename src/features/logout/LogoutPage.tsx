@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { authService } from '../../common/authService';
 
 function LogoutPage() {
-  const history = useNavigate();
-
   useEffect(() => {
     authService.setLoggedOut();
-    history('/auth');
+
+    window.location.href = '/auth';
   }, []);
 
   return (

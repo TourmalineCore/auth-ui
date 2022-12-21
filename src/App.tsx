@@ -12,7 +12,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/auth" element={<LoginPage />} />
-        <Route path="/logout" element={<LogoutPage />} />
+        <Route path="/auth/logout" element={<LogoutPage />} />
       </Routes>
     </BrowserRouter>
   );
