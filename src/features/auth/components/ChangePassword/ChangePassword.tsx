@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Input, Button } from '@tourmalinecore/react-tc-ui-kit';
 import AuthForm from '../AuthForm/AuthForm';
+import { api } from '../../../../common/api';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({ password: '' });
@@ -34,13 +35,11 @@ function ChangePassword() {
     setTriedToSubmit(true);
 
     if (password) {
-      //   try {
-      //     await setLogin({ login, password });
-      //   } catch (e) {
-      //     setFormData({ ...formData, password: '' });
-      //   }
-
-      setFormData({ password: '' });
+      try {
+        await api.post('create-password', {});
+      } catch (e) {
+        setFormData({ password: '' });
+      }
     }
   }
 }

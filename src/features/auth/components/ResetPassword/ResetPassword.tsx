@@ -1,6 +1,7 @@
 import { Input, Button } from '@tourmalinecore/react-tc-ui-kit';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import AuthForm from '../AuthForm/AuthForm';
+import { api } from '../../../../common/api';
 
 function ResetPassword() {
   const [formData, setFormData] = useState({ email: '' });
@@ -35,13 +36,11 @@ function ResetPassword() {
     setTriedToSubmit(true);
 
     if (email) {
-    //   try {
-    //     await setLogin({ login, password });
-    //   } catch (e) {
-    //     setFormData({ ...formData, password: '' });
-    //   }
-
-      setFormData({ email: '' });
+      try {
+        await api.post('reset', `${email}@tourmalinecore.com`);
+      } catch (e) {
+        setFormData({ email: '' });
+      }
     }
   }
 }
