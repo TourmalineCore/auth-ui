@@ -3,7 +3,7 @@ import { authService } from './authService';
 
 const createAPI = (): AxiosInstance => {
   const apiConfig = axios.create({
-    baseURL: 'https://localhost:44334/auth/',
+    baseURL: 'https://localhost:7104/auth/',
   });
 
   apiConfig.interceptors.request.use(

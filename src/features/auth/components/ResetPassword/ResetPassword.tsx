@@ -37,7 +37,7 @@ function ResetPassword() {
 
     if (email) {
       try {
-        await api.post('reset', `${email}@tourmalinecore.com`);
+        await api.post(`reset?corporateEmail=${email}@tourmalinecore.com`);
       } catch (e) {
         setFormData({ email: '' });
       }
