@@ -1,14 +1,16 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Input, Button } from '@tourmalinecore/react-tc-ui-kit';
+import { useParams } from 'react-router-dom';
 import AuthForm from '../AuthForm/AuthForm';
 import { api } from '../../../../common/api';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({ password: '' });
   const [triedToSubmit, setTriedToSubmit] = useState(false);
+  const { code } = useParams();
   return (
     <AuthForm
-      head="Change Password"
+      head={`Change Password: ${code}`}
       button={<Button type="submit">Done</Button>}
       onSubmit={handleFormSubmit}
     >

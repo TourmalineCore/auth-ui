@@ -14,8 +14,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/auth" element={<LoginPage />} />
-        <Route path="/auth/reset-password" element={<ResetPassword />} />
-        <Route path="/auth/change-password" element={<ChangePassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/invation" element={<ChangePassword />} />
         <Route path="/auth/logout" element={<LogoutPage />} />
       </Routes>
     </BrowserRouter>
