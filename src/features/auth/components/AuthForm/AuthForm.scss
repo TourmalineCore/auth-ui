@@ -1,7 +1,40 @@
 .auth-form {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100vh;
+  font-family: Montserrat, sans-serif;
+
+  &__window {
+    border-radius: 40px;
+    padding: 72px 130px 176px;
+    box-shadow: 0 0 43px rgb(24 14 54 / 10%);
+    background-color: #fff;
+
+    &-logo {
+      margin-bottom: 42px;
+    }
+
+    &-head {
+      font-weight: 500;
+      font-size: 45px;
+    }
+
+    &-desk {
+      margin-top: 16px;
+      font-weight: 500;
+      font-size: 26px;
+      color: #838383;
+    }
+
+    &-inputs {
+      margin-top: 48px;
+    }
+
+    &-button {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 64px;
+    }
+  }
 }
