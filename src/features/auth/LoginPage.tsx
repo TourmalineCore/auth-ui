@@ -19,7 +19,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      window.location.href = '/';
+      window.location.href = '/analytics';
     }
   }, [isAuthenticated]);
 
