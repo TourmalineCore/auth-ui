@@ -53,7 +53,7 @@ function AuthPage() {
           onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: event.target.value })}
         />
 
-        <Link to="/auth/reset" className="auth-page__forget-link">Forget password</Link>
+        <Link to="/auth/reset" className="auth-page__forget-link">Forgot password</Link>
 
       </LoginForm>
     </div>

@@ -21,7 +21,7 @@ function ResetPage() {
         onSubmit={handleFormSubmit}
         buttonText="Send"
       >
-        <Link to="/auth" className="reset-page__link-back">
+        <Link to="/auth" className="reset-page__back-link">
           <img src={arrow} alt="Link back to auth page" />
         </Link>
 
