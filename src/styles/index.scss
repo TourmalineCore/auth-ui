@@ -2,9 +2,12 @@
 @import "globals";
 @import "variables";
 
-// auth
-@import "../features/auth/components/LoginForm/LoginForm";
-@import "../features/auth/LoginPage";
+// components
+@import "../components/LoginForm/LoginForm";
+
+// features
+@import "../features/auth/AuthPage";
+@import "../features/reset/ResetPage";
 
 // Theme
 @import "../theme/themeVariables";

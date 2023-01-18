@@ -1,9 +1,31 @@
-.auth-form {
-  position: relative;
-  margin: auto;
-  padding: 0 10px;
-  width: 100%;
-  max-width: 424px;
+.login-form {
+  display: flex;
+  overflow-x: hidden;
+  padding: 40px 0;
+  height: 100vh; /* ie11 fallback */
+  height: calc(var(--vh, 1vh) * 100);
+  font-size: 16px;
+  line-height: 1.15;
+  background-image:
+    linear-gradient(
+      180deg,
+      var(--accent-gradient-color-1) 0%,
+      var(--accent-gradient-color-2) 52%,
+      var(--accent-gradient-color-3) 100%
+    );
+
+  &__inner {
+    position: relative;
+    margin: auto;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 424px;
+
+    @include tablet {
+      margin: auto;
+      padding: 0;
+    }
+  }
 
   &__bg-image {
     color: var(--color-text);
@@ -16,7 +38,7 @@
         right: 100%;
         top: 128px;
         display: block;
-        width: 319px;
+        width: 320px;
         height: 162px;
       }
 
@@ -30,7 +52,7 @@
       position: absolute;
       left: 50%;
       bottom: calc(100% - 4px);
-      width: 147px;
+      width: 148px;
       height: 85px;
       transform: translateX(-50%);
 
@@ -76,7 +98,7 @@
     @include tablet {
       padding: 30px 62px 76px;
       font-size: 20px;
-      line-height: 23px;
+      line-height: 1.15;
     }
   }
 
@@ -106,8 +128,23 @@
     text-align: center;
   }
 
-  @include tablet {
-    margin: auto;
-    padding: 0;
+  @include tablet-xl {
+    background-image: none;
   }
+}
+
+.svg-fill-accent-first {
+  fill: var(--auth-bg-accent-color-first);
+}
+
+.svg-stroke-accent-first {
+  stroke: var(--auth-bg-accent-color-first);
+}
+
+.svg-fill-accent-last {
+  fill: var(--auth-bg-accent-color-last);
+}
+
+.svg-stroke-accent-last {
+  stroke: var(--auth-bg-accent-color-last);
 }

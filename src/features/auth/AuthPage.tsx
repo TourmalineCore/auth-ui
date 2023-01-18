@@ -3,11 +3,12 @@ import {
 } from 'react';
 
 import { Input } from '@tourmalinecore/react-tc-ui-kit';
-import LoginForm from './components/LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
 
 import { authService, setLogin } from '../../common/authService';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
-function LoginPage() {
+function AuthPage() {
   // @ts-ignore
   const [isAuthenticated] = useContext(authService.AuthContext);
 
@@ -51,6 +52,9 @@ function LoginPage() {
           isMessagesAbsolute
           onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: event.target.value })}
         />
+
+        <Link to="/auth/reset" className="auth-page__forget-link">Forgot password</Link>
+
       </LoginForm>
     </div>
   );
@@ -75,4 +79,4 @@ function LoginPage() {
   }
 }
 
-export default LoginPage;
+export default AuthPage;
