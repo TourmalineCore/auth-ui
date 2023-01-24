@@ -17,7 +17,7 @@ import { useAuthenticated } from '../../common/hooks/useAuthenticared';
 function CreatePasswordPage() {
   useAuthenticated();
 
-  const [formData, setFormData] = useState('');
+  const [password, setPassword] = useState('');
 
   const [triedToSubmit, setTriedToSubmit] = useState(false);
   const [isTooltip, setIsTooltip] = useState(false);
@@ -29,7 +29,7 @@ function CreatePasswordPage() {
     isContainsNumber,
     isContainsUppercaseLetter,
     isValid,
-  } = useValidation(formData, {
+  } = useValidation(password, {
     minLenght: 8,
     isContainsNumber: true,
     isContainsUppercaseLetter: true,
@@ -53,47 +53,32 @@ function CreatePasswordPage() {
           {' '}
           {login || ''}
         </div>
-        <div style={{
-          position: 'relative',
-        }}
-        >
+        <div className="create-password-page__inner">
           <Input
             id="password"
             type="password"
             label="Create password"
-            className="create-password-page__input ddd"
-            value={formData}
-            isInvalid={!formData && triedToSubmit}
+            className="create-password-page__input"
+            value={password}
+            isInvalid={!password && triedToSubmit}
             validationMessages={['Поле должно быть заполнено']}
             isMessagesAbsolute
-            onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData(event.target.value)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
             onFocus={() => setIsTooltip(true)}
             onBlur={() => setIsTooltip(false)}
             autoComplete="off"
           />
 
-          {(isTooltip || formData) && isValid && (
-            <Tooltip
-              className="create-password-page__tooltip"
-            >
+          {(isTooltip || password) && isValid && (
+            <Tooltip className="create-password-page__tooltip">
               <ul className="create-password-page__required-list">
-                <li
-                  className={clsx({
-                    'test-e': minLenght,
-                  })}
-                >
+                <li className={clsx({ 'create-password-page__valid': minLenght })}>
                   больше 8
                 </li>
-                <li className={clsx({
-                  'test-e': isContainsUppercaseLetter,
-                })}
-                >
+                <li className={clsx({ 'create-password-page__valid': isContainsUppercaseLetter })}>
                   с большой буквы
                 </li>
-                <li className={clsx({
-                  'test-e': isContainsNumber,
-                })}
-                >
+                <li className={clsx({ 'create-password-page__valid': isContainsNumber })}>
                   с цифрой
                 </li>
               </ul>
@@ -110,17 +95,17 @@ function CreatePasswordPage() {
 
     setTriedToSubmit(true);
 
-    if (formData) {
+    if (password) {
       try {
         await api.post('/auth/create-password', {
           login,
           userResetPasswordToken,
-          password: formData,
+          password,
         });
 
-        await setLogin({ login, password: formData });
+        await setLogin({ login, password });
       } catch (e) {
-        setFormData('');
+        setPassword('');
       }
     }
   }

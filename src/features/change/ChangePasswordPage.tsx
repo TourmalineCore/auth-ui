@@ -17,7 +17,7 @@ import { useAuthenticated } from '../../common/hooks/useAuthenticared';
 function ChangePasswordPage() {
   useAuthenticated();
 
-  const [formData, setFormData] = useState('');
+  const [password, setPassword] = useState('');
 
   const [triedToSubmit, setTriedToSubmit] = useState(false);
   const [isTooltip, setIsTooltip] = useState(false);
@@ -29,7 +29,7 @@ function ChangePasswordPage() {
     isContainsNumber,
     isContainsUppercaseLetter,
     isValid,
-  } = useValidation(formData, {
+  } = useValidation(password, {
     minLenght: 8,
     isContainsNumber: true,
     isContainsUppercaseLetter: true,
@@ -53,47 +53,36 @@ function ChangePasswordPage() {
           {' '}
           {login || ''}
         </div>
-        <div style={{
-          position: 'relative',
-        }}
-        >
+        <div className="change-password-page__inner">
           <Input
             id="password"
             type="password"
             label="Change password"
-            className="change-password-page__input ddd"
-            value={formData}
-            isInvalid={!formData && triedToSubmit}
+            className="change-password-page__input"
+            value={password}
+            isInvalid={!password && triedToSubmit}
             validationMessages={['Поле должно быть заполнено']}
             isMessagesAbsolute
-            onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData(event.target.value)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
             onFocus={() => setIsTooltip(true)}
             onBlur={() => setIsTooltip(false)}
             autoComplete="off"
           />
 
-          {(isTooltip || formData) && isValid && (
+          {(isTooltip || password) && isValid && (
             <Tooltip
               className="change-password-page__tooltip"
             >
               <ul className="change-password-page__required-list">
                 <li
-                  className={clsx({
-                    'test-e': minLenght,
-                  })}
+                  className={clsx({ 'change-password-page__valid': minLenght })}
                 >
                   больше 8
                 </li>
-                <li className={clsx({
-                  'test-e': isContainsUppercaseLetter,
-                })}
-                >
+                <li className={clsx({ 'change-password-page__valid': isContainsUppercaseLetter })}>
                   с большой буквы
                 </li>
-                <li className={clsx({
-                  'test-e': isContainsNumber,
-                })}
-                >
+                <li className={clsx({ 'change-password-page__valid': isContainsNumber })}>
                   с цифрой
                 </li>
               </ul>
@@ -110,17 +99,17 @@ function ChangePasswordPage() {
 
     setTriedToSubmit(true);
 
-    if (formData) {
+    if (password) {
       try {
         await api.post('/auth/create-password', {
           login,
           userResetPasswordToken,
-          password: formData,
+          password,
         });
 
-        await setLogin({ login, password: formData });
+        await setLogin({ login, password });
       } catch (e) {
-        setFormData('');
+        setPassword('');
       }
     }
   }
