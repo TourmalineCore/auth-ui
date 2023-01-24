@@ -1,28 +1,22 @@
 import {
-  useContext, useState, useEffect, ChangeEvent, FormEvent,
+  useState, ChangeEvent, FormEvent,
 } from 'react';
 
 import { Input } from '@tourmalinecore/react-tc-ui-kit';
 import { Link } from 'react-router-dom';
 
-import { authService, setLogin } from '../../common/authService';
+import { setLogin } from '../../common/authService';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import { useAuthenticated } from '../../common/hooks/useAuthenticared';
 
 function AuthPage() {
-  // @ts-ignore
-  const [isAuthenticated] = useContext(authService.AuthContext);
+  useAuthenticated();
 
   const [formData, setFormData] = useState({
     login: '',
     password: '',
   });
   const [triedToSubmit, setTriedToSubmit] = useState(false);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      window.location.href = '/analytics';
-    }
-  }, [isAuthenticated]);
 
   return (
     <div className="auth-page">

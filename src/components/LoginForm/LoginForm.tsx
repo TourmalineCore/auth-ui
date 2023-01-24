@@ -9,11 +9,13 @@ function LoginForm({
   errorMessages = [],
   onSubmit = () => {},
   buttonText = 'Log In',
+  buttonDisabled = false,
 }: {
   children: ReactNode;
   errorMessages?: string[];
   onSubmit: FormEventHandler<HTMLFormElement>;
   buttonText?: string;
+  buttonDisabled?: boolean;
 }) {
   return (
     <div className="login-form">
@@ -35,6 +37,7 @@ function LoginForm({
           <div className="login-form__controls">
             <Button
               type="submit"
+              disabled={buttonDisabled}
             >
               {buttonText}
             </Button>

@@ -10,7 +10,7 @@ import { api } from '../../common/api';
 import LoginForm from '../../components/LoginForm/LoginForm';
 
 function ResetPage() {
-  const [formData, setFormData] = useState('');
+  const [login, setLogin] = useState('');
   const [isSuccessful, setIsSuccessful] = useState(false);
 
   const [triedToSubmit, setTriedToSubmit] = useState(false);
@@ -34,11 +34,11 @@ function ResetPage() {
             type="text"
             label="Email"
             className="reset-page__input"
-            value={formData}
-            isInvalid={!formData && triedToSubmit}
+            value={login}
+            isInvalid={!login && triedToSubmit}
             validationMessages={['Поле должно быть заполнено']}
             isMessagesAbsolute
-            onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData(event.target.value)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => setLogin(event.target.value)}
           />
           <small className="reset-page__prefix">
             @tourmalinecore.com
@@ -56,13 +56,13 @@ function ResetPage() {
 
     setTriedToSubmit(true);
 
-    if (formData) {
+    if (login) {
       try {
-        await api.post(`/auth/reset?corporateEmail=${formData}@tourmalinecore.com`);
+        await api.post(`/auth/reset?corporateEmail=${login}@tourmalinecore.com`);
 
         setIsSuccessful(true);
       } catch (e) {
-        setFormData('');
+        setLogin('');
       }
     }
   }
