@@ -2,8 +2,6 @@ import {
   useState, ChangeEvent, FormEvent,
 } from 'react';
 
-import { Input } from '@tourmalinecore/react-tc-ui-kit';
-
 import { clsx } from 'clsx';
 import { useSearchParams } from 'react-router-dom';
 import { api } from '../../common/api';
@@ -13,13 +11,13 @@ import Tooltip from '../../components/Tooltip/Tooltip';
 
 import { setLogin } from '../../common/authService';
 import { useAuthenticated } from '../../common/hooks/useAuthenticared';
+import InputPassword from '../../components/Input/InputPassword';
 
 function ChangePasswordPage() {
   useAuthenticated();
 
   const [password, setPassword] = useState('');
 
-  const [triedToSubmit, setTriedToSubmit] = useState(false);
   const [isTooltip, setIsTooltip] = useState(false);
 
   const [searchParams] = useSearchParams();
@@ -44,25 +42,16 @@ function ChangePasswordPage() {
         onSubmit={handleFormSubmit}
         buttonText="Done"
         buttonDisabled={isValid}
+        title="Change Password"
+        subtitle="Create new password for"
+        email="iivanov@tourmalinecore.com"
       >
-
-        <h1 className="change-password-page__title">Change password</h1>
-
-        <div className="change-password-page__login">
-          Логин:
-          {' '}
-          {login || ''}
-        </div>
         <div className="change-password-page__inner">
-          <Input
+          <InputPassword
             id="password"
-            type="password"
-            label="Change password"
+            label="Create password"
             className="change-password-page__input"
             value={password}
-            isInvalid={!password && triedToSubmit}
-            validationMessages={['Поле должно быть заполнено']}
-            isMessagesAbsolute
             onChange={(event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
             onFocus={() => setIsTooltip(true)}
             onBlur={() => setIsTooltip(false)}
@@ -96,8 +85,6 @@ function ChangePasswordPage() {
 
   async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    setTriedToSubmit(true);
 
     if (password) {
       try {

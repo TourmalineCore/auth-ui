@@ -1,12 +1,40 @@
 .auth-page {
+  position: relative;
+  background-image: url(../../assets/img/top-cirlce.svg);
+  background-position: 100% 0;
+  background-size: 100px;
+  background-repeat: no-repeat;
+
+  &__left-image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+  }
+
   &__input {
-    margin-bottom: 30px;
+    & + & {
+      margin-top: 8px;
+
+      @include desktop {
+        margin-top: 24px;
+      }
+    }
   }
 
   &__forget-link {
     display: block;
-    margin-top: -14px;
+    margin-top: 16px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
     text-align: right;
-    color: #5a5858;
+    text-decoration: none;
+    color: #838383;
+
+    @include desktop {
+      font-size: 20px;
+    }
   }
 }

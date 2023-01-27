@@ -1,13 +1,11 @@
 .tooltip {
   position: relative;
-  border: 1px solid #000;
-  background-color: #fff;
 
   &::after {
-    content: "◁";
+    content: "\25B3";
     position: absolute;
-    left: -14px;
-    top: 10px;
+    left: 35px;
+    top: -18px;
     width: 10px;
     height: 10px;
   }

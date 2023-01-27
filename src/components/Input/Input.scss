@@ -1,0 +1,99 @@
+.input {
+  $this: &;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__control {
+    outline: none;
+    border: none;
+    border-radius: 34px;
+    padding: 16px 56px;
+    width: 100%;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.4;
+    color: inherit;
+    background-color: #e6f2f480;
+    transition: all 0.3s;
+
+    @include tablet-xl {
+      padding-left: 72px;
+    }
+
+    @include desktop {
+      padding: 22px 80px;
+    }
+  }
+
+  &__label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    color: #838383;
+
+    @include tablet-xl {
+      font-size: 17px;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    transform: translateY(-50%);
+
+    @include tablet-xl {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include desktop {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  &__action-button {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    outline: none;
+    border: none;
+    padding: 0;
+    height: 15px;
+    font-size: 16px;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  &--password {
+    #{$this}__control {
+      position: relative;
+    }
+  }
+
+  &--reset {
+    #{$this}__control {
+      padding: 10px;
+    }
+  }
+
+  @include desktop {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}

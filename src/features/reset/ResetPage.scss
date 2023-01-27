@@ -1,12 +1,17 @@
 .reset-page {
   &__back-link {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 24px;
+    top: 24px;
 
     img {
-      width: 40px;
-      height: 40px;
+      width: 28px;
+      height: 28px;
+    }
+
+    @include desktop {
+      left: 30px;
+      top: 30px;
     }
   }
 
@@ -25,7 +30,19 @@
 
   &__prefix {
     margin-top: 22px;
-    margin-left: 8px;
+    border-radius: 34px;
+    padding: 16px 56px;
+    width: 100%;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.4;
+    color: inherit;
+    background-color: #e6f2f480;
+
+    @include desktop {
+      padding: 22px;
+    }
   }
 
   &__text {

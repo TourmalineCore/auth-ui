@@ -2,12 +2,14 @@ import {
   useState, ChangeEvent, FormEvent,
 } from 'react';
 
-import { Input } from '@tourmalinecore/react-tc-ui-kit';
 import { Link } from 'react-router-dom';
+import loginIcon from '../../assets/img/login.svg';
 
 import { setLogin } from '../../common/authService';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { useAuthenticated } from '../../common/hooks/useAuthenticared';
+import Input from '../../components/Input/Input';
+import InputPassword from '../../components/Input/InputPassword';
 
 function AuthPage() {
   useAuthenticated();
@@ -16,39 +18,34 @@ function AuthPage() {
     login: '',
     password: '',
   });
-  const [triedToSubmit, setTriedToSubmit] = useState(false);
 
   return (
     <div className="auth-page">
+      <div className="auth-page__left-image" />
       <LoginForm
         onSubmit={handleFormSubmit}
+        title="Welcome back"
+        subtitle="Sign in to your account"
+        buttonDisabled={false}
       >
         <Input
           id="login"
           className="auth-page__input"
           type="text"
           label="Login"
+          iconSrc={loginIcon}
           value={formData.login}
-          isInvalid={!formData.login && triedToSubmit}
-          validationMessages={['Поле должно быть заполнено']}
-          isMessagesAbsolute
           onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, login: event.target.value })}
         />
-
-        <Input
+        <InputPassword
           id="password"
           className="auth-page__input"
-          type="password"
           label="Password"
           value={formData.password}
-          isInvalid={!formData.password && triedToSubmit}
-          validationMessages={['Поле должно быть заполнено']}
-          isMessagesAbsolute
           onChange={(event: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: event.target.value })}
         />
 
-        <Link to="/auth/reset" className="auth-page__forget-link">Forgot password</Link>
-
+        <Link to="/auth/reset" className="auth-page__forget-link">Forgot password?</Link>
       </LoginForm>
     </div>
   );
@@ -60,8 +57,6 @@ function AuthPage() {
     } = formData;
 
     event.preventDefault();
-
-    setTriedToSubmit(true);
 
     if (login && password) {
       try {
