@@ -1,45 +1,36 @@
 import {
-  useState, ChangeEvent, FormEvent,
+  useState, FormEvent,
 } from 'react';
 
-import { Link } from 'react-router-dom';
-import Input from '../../components/Input/Input';
-
-import arrow from '../../assets/img/arrow-left-colored.svg';
 import { api } from '../../common/api';
+import emailIcon from '../../assets/img/icon-email.svg';
+
 import LoginForm from '../../components/LoginForm/LoginForm';
+import InputEmailDomain from '../../components/Input/InputEmailDomain';
 
 function ResetPage() {
   const [login, setLogin] = useState('');
   const [isSuccessful, setIsSuccessful] = useState(false);
 
+  const successfulMessage = isSuccessful ? 'We have sent a link to reset your password to your email. Check your email or change the entered data.' : '';
   return (
-    <div className="reset-page">
+    <div className="background-img-pages reset-page">
       <LoginForm
         onSubmit={handleFormSubmit}
         buttonText="Send"
         title="Reset Password"
         subtitle="Enter your email, a reset link will be sent to it"
+        buttonDisabled={false}
+        backPath="/auth"
+        errorMessage={successfulMessage}
       >
-        <Link to="/auth" className="reset-page__back-link">
-          <img src={arrow} alt="Link back to auth page" />
-        </Link>
-        <div className="reset-page__inner">
-          <Input
-            id="Email"
-            type="text"
-            label="Email"
-            className="reset-page__input input--reset"
-            value={login}
-            onChange={(event: ChangeEvent<HTMLInputElement>) => setLogin(event.target.value)}
-          />
-          <small className="reset-page__prefix">
-            @tourmalinecore.com
-          </small>
-        </div>
-        {isSuccessful && (
-          <div className="reset-page__text">We have sent a link to reset your password to your email. Check your email or change the entered data.</div>
-        )}
+        <InputEmailDomain
+          id="reset"
+          label="Email"
+          iconSrc={emailIcon}
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
+        />
       </LoginForm>
     </div>
   );

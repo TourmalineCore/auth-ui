@@ -1,20 +1,18 @@
 import clsx from 'clsx';
 import { DetailedHTMLProps, InputHTMLAttributes, useState } from 'react';
-import { ReactComponent as IconEyeClosed } from '../../assets/img/eye-closed.svg';
-import { ReactComponent as IconEyeOpen } from '../../assets/img/eye-open.svg';
-import passwordIcon from '../../assets/img/password.svg';
+import { ReactComponent as IconEyeClosed } from '../../assets/img/icon-eye-closed.svg';
+import { ReactComponent as IconEyeOpen } from '../../assets/img/icon-eye-open.svg';
+import passwordIcon from '../../assets/img/icon-password.svg';
 
 interface InputPasswordProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   id: string;
   label: string;
-  description?: string;
   type?: 'password';
 }
 
 function InputPassword({
   id,
   label,
-  description,
   className,
   type = 'password',
   ...props
@@ -31,7 +29,6 @@ function InputPassword({
           id={id}
           type={isPasswordVisible ? 'text' : type}
           className="input__control"
-          placeholder=" "
           {...props}
         />
         <button
@@ -44,7 +41,6 @@ function InputPassword({
         </button>
 
       </div>
-      {description && <div className="input__description">{description}</div>}
     </div>
   );
 }

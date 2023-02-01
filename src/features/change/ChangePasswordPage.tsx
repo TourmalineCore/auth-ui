@@ -10,7 +10,7 @@ import { useValidation } from '../../common/hooks/useValidation';
 import Tooltip from '../../components/Tooltip/Tooltip';
 
 import { setLogin } from '../../common/authService';
-import { useAuthenticated } from '../../common/hooks/useAuthenticared';
+import { useAuthenticated } from '../../common/hooks/useAuthenticated';
 import InputPassword from '../../components/Input/InputPassword';
 
 function ChangePasswordPage() {
@@ -26,25 +26,29 @@ function ChangePasswordPage() {
     minLenght,
     isContainsNumber,
     isContainsUppercaseLetter,
+    isContainsLowercaseLetter,
+    isContainsSpecialCharacters,
     isValid,
   } = useValidation(password, {
     minLenght: 8,
     isContainsNumber: true,
     isContainsUppercaseLetter: true,
+    isContainsLowercaseLetter: true,
+    isContainsSpecialCharacters: true,
   });
 
   const login = searchParams.get('login');
   const userResetPasswordToken = searchParams.get('userResetPasswordToken');
 
   return (
-    <div className="change-password-page">
+    <div className="background-img-pages change-password-page">
       <LoginForm
         onSubmit={handleFormSubmit}
         buttonText="Done"
         buttonDisabled={isValid}
         title="Change Password"
         subtitle="Create new password for"
-        email="iivanov@tourmalinecore.com"
+        email={login}
       >
         <div className="change-password-page__inner">
           <InputPassword
@@ -59,20 +63,37 @@ function ChangePasswordPage() {
           />
 
           {(isTooltip || password) && isValid && (
-            <Tooltip
-              className="change-password-page__tooltip"
-            >
+            <Tooltip className="change-password-page__tooltip">
               <ul className="change-password-page__required-list">
-                <li
-                  className={clsx({ 'change-password-page__valid': minLenght })}
-                >
-                  больше 8
+                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': minLenght })}>
+                  <span className="change-password-page__checkbox">
+                    {minLenght && <span className="change-password-page__checkmark" />}
+                  </span>
+                  <span>Minimum of 8 characters</span>
                 </li>
-                <li className={clsx({ 'change-password-page__valid': isContainsUppercaseLetter })}>
-                  с большой буквы
+                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsUppercaseLetter })}>
+                  <span className="change-password-page__checkbox">
+                    {isContainsUppercaseLetter && <span className="change-password-page__checkmark" />}
+                  </span>
+                  <span>Contains an uppercase letter</span>
                 </li>
-                <li className={clsx({ 'change-password-page__valid': isContainsNumber })}>
-                  с цифрой
+                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsLowercaseLetter })}>
+                  <span className="change-password-page__checkbox">
+                    {isContainsLowercaseLetter && <span className="change-password-page__checkmark" />}
+                  </span>
+                  <span>Contains an lowercase letter</span>
+                </li>
+                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsNumber })}>
+                  <span className="change-password-page__checkbox">
+                    {isContainsNumber && <span className="change-password-page__checkmark" />}
+                  </span>
+                  <span>Contains a number (0-9)</span>
+                </li>
+                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsSpecialCharacters })}>
+                  <span className="change-password-page__checkbox">
+                    {isContainsSpecialCharacters && <span className="change-password-page__checkmark" />}
+                  </span>
+                  <span>Contains a special symbol</span>
                 </li>
               </ul>
             </Tooltip>

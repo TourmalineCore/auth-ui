@@ -10,7 +10,7 @@ import { useValidation } from '../../common/hooks/useValidation';
 import Tooltip from '../../components/Tooltip/Tooltip';
 
 import { setLogin } from '../../common/authService';
-import { useAuthenticated } from '../../common/hooks/useAuthenticared';
+import { useAuthenticated } from '../../common/hooks/useAuthenticated';
 import InputPassword from '../../components/Input/InputPassword';
 
 function CreatePasswordPage() {
@@ -40,21 +40,20 @@ function CreatePasswordPage() {
   const userResetPasswordToken = searchParams.get('userResetPasswordToken');
 
   return (
-    <div className="create-password-page">
+    <div className="background-img-pages create-password-page">
       <LoginForm
         onSubmit={handleFormSubmit}
         buttonText="Done"
         buttonDisabled={isValid}
-        title="Change password"
+        title="Create Password"
         subtitle="Create a password for"
-        email="www@der.com"
-        className="login-form--create"
+        email={login}
       >
         <div className="create-password-page__inner">
           <InputPassword
             id="password"
             type="password"
-            label="Change password"
+            label="Create password"
             className="create-password-page__input"
             value={password}
             onChange={(event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
@@ -70,31 +69,31 @@ function CreatePasswordPage() {
                   <span className="create-password-page__checkbox">
                     {minLenght && <span className="create-password-page__checkmark" />}
                   </span>
-                  <span>больше 8</span>
+                  <span>Minimum of 8 characters</span>
                 </li>
                 <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsUppercaseLetter })}>
                   <span className="create-password-page__checkbox">
                     {isContainsUppercaseLetter && <span className="create-password-page__checkmark" />}
                   </span>
-                  <span>с большой буквы</span>
+                  <span>Contains an uppercase letter</span>
                 </li>
                 <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsLowercaseLetter })}>
                   <span className="create-password-page__checkbox">
                     {isContainsLowercaseLetter && <span className="create-password-page__checkmark" />}
                   </span>
-                  <span>с маленькой буквы</span>
+                  <span>Contains an lowercase letter</span>
                 </li>
                 <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsNumber })}>
                   <span className="create-password-page__checkbox">
                     {isContainsNumber && <span className="create-password-page__checkmark" />}
                   </span>
-                  <span>с цифрой</span>
+                  <span>Contains a number (0-9)</span>
                 </li>
                 <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsSpecialCharacters })}>
                   <span className="create-password-page__checkbox">
                     {isContainsSpecialCharacters && <span className="create-password-page__checkmark" />}
                   </span>
-                  <span>с спецсимволами</span>
+                  <span>Contains a special symbol</span>
                 </li>
               </ul>
             </Tooltip>

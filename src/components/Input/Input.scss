@@ -16,10 +16,10 @@
     border-radius: 34px;
     padding: 16px 56px;
     width: 100%;
-    font-family: Montserrat;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 1.4;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: 1.1;
     color: inherit;
     background-color: #e6f2f480;
     transition: all 0.3s;
@@ -28,21 +28,15 @@
       padding-left: 72px;
     }
 
-    @include desktop {
+    @include desktop-xl {
       padding: 22px 80px;
     }
   }
 
   &__label {
+    display: inline-block;
     margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 1;
     color: #838383;
-
-    @include tablet-xl {
-      font-size: 17px;
-    }
   }
 
   &__icon {
@@ -59,7 +53,7 @@
       height: 40px;
     }
 
-    @include desktop {
+    @include desktop-xl {
       width: 56px;
       height: 56px;
     }
@@ -72,12 +66,70 @@
     outline: none;
     border: none;
     padding: 0;
-    height: 15px;
-    font-size: 16px;
-    color: inherit;
+    color: #838383;
     background-color: transparent;
     cursor: pointer;
     transform: translateY(-50%);
+
+    svg {
+      display: block;
+      width: 21px;
+      height: 16px;
+
+      @include tablet-xl {
+        right: 24px;
+        width: 28px;
+        height: 20px;
+      }
+
+      @include desktop-xl {
+        width: 36px;
+        height: 26px;
+      }
+    }
+  }
+
+  &__domain {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    background: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background-color: #c2c2c2;
+    }
+
+    @include tablet-xl {
+      right: 16px;
+      top: 18px;
+    }
+
+    @include desktop-xl {
+      right: 24px;
+    }
+  }
+
+  &--reset {
+    padding: 16px 205px 16px 56px;
+
+    @include tablet-xl {
+      padding-right: 240px;
+      padding-left: 72px;
+    }
+
+    @include desktop-xl {
+      padding: 16px 56px;
+      padding: 22px 290px 22px 80px;
+    }
   }
 
   &--password {
@@ -86,14 +138,12 @@
     }
   }
 
-  &--reset {
-    #{$this}__control {
-      padding: 10px;
-    }
+  @include tablet-xl {
+    font-size: 17px;
   }
 
-  @include desktop {
-    font-size: 18px;
+  @include desktop-xl {
+    font-size: 20px;
     line-height: 1.6;
   }
 }
