@@ -1,10 +1,11 @@
 import { FormEventHandler, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-import { Link } from 'react-router-dom';
+import logo from '../../assets/img/icon-tc-logo.svg';
+import arrow from '../../assets/img/icon-arrow-left-colored.svg';
+
 import Button from '../Button/Button';
-import logo from '../../assets/img/tc-logo.svg';
-import arrow from '../../assets/img/arrow-left-colored.svg';
 
 function LoginForm({
   children,

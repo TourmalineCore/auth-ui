@@ -24,7 +24,7 @@
   &:active,
   &:focus {
     box-shadow: none;
-    color: #fff;
+    color: var(--color-white);
   }
 
   @include tablet-xl {
@@ -42,7 +42,7 @@
   @media (hover: hover) {
     &:not([disabled]):hover {
       box-shadow: none;
-      color: #fff;
+      color: var(--color-white);
     }
   }
 }

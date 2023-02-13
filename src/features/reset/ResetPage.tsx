@@ -13,8 +13,9 @@ function ResetPage() {
   const [isSuccessful, setIsSuccessful] = useState(false);
 
   const successfulMessage = isSuccessful ? 'We have sent a link to reset your password to your email. Check your email or change the entered data.' : '';
+
   return (
-    <div className="background-img-pages reset-page">
+    <div className="background-img-page reset-page">
       <LoginForm
         onSubmit={handleFormSubmit}
         buttonText="Send"

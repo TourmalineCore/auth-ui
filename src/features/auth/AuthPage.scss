@@ -39,6 +39,7 @@
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 24px;
+    color: var(--color-black);
 
     @include tablet-xl {
       font-size: 32px;
@@ -54,7 +55,6 @@
     margin-bottom: 40px;
     font-weight: 500;
     font-size: inherit;
-    color: #838383;
   }
 
   &__inner {
@@ -120,7 +120,7 @@
     font-size: inherit;
     text-align: right;
     text-decoration: none;
-    color: #838383;
+    color: inherit;
   }
 
   &__button-box {
@@ -141,30 +141,15 @@
     margin-top: 16px;
     min-height: 32px;
     font-weight: 500;
-    font-style: normal;
     font-size: 15px;
-    line-height: 1.1;
-    color: #838383;
+    line-height: 1;
+    color: var(--color-error);
 
     @include desktop-xl {
       margin-top: 40px;
       min-height: 56px;
       font-size: 20px;
       line-height: 1.4;
-    }
-  }
-
-  &__message {
-    font-size: 14px;
-    line-height: 1.15;
-    text-align: center;
-
-    &--error {
-      color: #da2228;
-    }
-
-    @include tablet {
-      font-size: 18px;
     }
   }
 }

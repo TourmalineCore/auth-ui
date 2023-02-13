@@ -36,7 +36,8 @@
   &__label {
     display: inline-block;
     margin-bottom: 8px;
-    color: #838383;
+
+    // color: var(--color-text);
   }
 
   &__icon {
@@ -66,7 +67,7 @@
     outline: none;
     border: none;
     padding: 0;
-    color: #838383;
+    color: var(--color-text);
     background-color: transparent;
     cursor: pointer;
     transform: translateY(-50%);
@@ -93,9 +94,7 @@
     position: absolute;
     right: 8px;
     top: 12px;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: inherit;
+    color: var(--color-black);
     background: transparent;
 
     &::after {
@@ -110,11 +109,12 @@
 
     @include tablet-xl {
       right: 16px;
-      top: 18px;
+      top: 16px;
     }
 
     @include desktop-xl {
       right: 24px;
+      top: 18px;
     }
   }
 
@@ -127,7 +127,6 @@
     }
 
     @include desktop-xl {
-      padding: 16px 56px;
       padding: 22px 290px 22px 80px;
     }
   }

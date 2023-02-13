@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { setLogin } from '../../common/authService';
 import { useAuthenticated } from '../../common/hooks/useAuthenticated';
 import loginIcon from '../../assets/img/icon-login.svg';
-import logo from '../../assets/img/tc-logo.svg';
+import logo from '../../assets/img/icon-tc-logo.svg';
 
 import Input from '../../components/Input/Input';
 import InputPassword from '../../components/Input/InputPassword';
@@ -19,9 +19,10 @@ function AuthPage() {
     login: '',
     password: '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   return (
-    <div className="background-img-pages auth-page">
+    <div className="background-img-page auth-page">
 
       <div className="auth-page__wrapper">
         <div className="auth-page__inner">
@@ -62,7 +63,7 @@ function AuthPage() {
             </div>
           </form>
           <div className="auth-page__result-message">
-            <span />
+            {errorMessage}
           </div>
         </div>
       </div>
@@ -81,6 +82,8 @@ function AuthPage() {
       try {
         await setLogin({ login, password });
       } catch (e) {
+        setErrorMessage('Error: Invalid email or password. Check the correctness of the entered data.');
+
         setFormData({ ...formData, password: '' });
       }
     }

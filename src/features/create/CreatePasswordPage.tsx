@@ -40,12 +40,12 @@ function CreatePasswordPage() {
   const userResetPasswordToken = searchParams.get('userResetPasswordToken');
 
   return (
-    <div className="background-img-pages create-password-page">
+    <div className="background-img-page create-password-page">
       <LoginForm
         onSubmit={handleFormSubmit}
-        buttonText="Done"
+        buttonText="Login"
         buttonDisabled={isValid}
-        title="Create Password"
+        title="Sign in"
         subtitle="Create a password for"
         email={login}
       >

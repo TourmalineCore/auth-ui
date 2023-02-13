@@ -17,9 +17,7 @@ function ChangePasswordPage() {
   useAuthenticated();
 
   const [password, setPassword] = useState('');
-
   const [isTooltip, setIsTooltip] = useState(false);
-
   const [searchParams] = useSearchParams();
 
   const {
@@ -41,7 +39,7 @@ function ChangePasswordPage() {
   const userResetPasswordToken = searchParams.get('userResetPasswordToken');
 
   return (
-    <div className="background-img-pages change-password-page">
+    <div className="background-img-page change-password-page">
       <LoginForm
         onSubmit={handleFormSubmit}
         buttonText="Done"

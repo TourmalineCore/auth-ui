@@ -48,6 +48,7 @@
     margin-bottom: 8px;
     font-weight: inherit;
     font-size: 24px;
+    color: var(--color-black);
 
     @include tablet-xl {
       font-size: 32px;
@@ -61,14 +62,14 @@
 
   &__email {
     display: block;
-    color: #000;
+    color: var(--color-black);
   }
 
   &__subtitle {
     margin-bottom: 32px;
     font-weight: inherit;
     font-size: inherit;
-    color: #838383;
+    color: var(--color-text);
 
     @include tablet-xl {
       margin-bottom: 64px;
@@ -124,7 +125,6 @@
     min-height: 48px;
     font-size: 15px;
     line-height: 1.1;
-    color: #838383;
 
     @include desktop-xl {
       margin-top: 40px;

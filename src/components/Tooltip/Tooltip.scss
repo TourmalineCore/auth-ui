@@ -6,7 +6,7 @@
   padding: 20px;
   width: 300px;
   box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
-  background-color: #fff;
+  background-color: var(--color-white);
 
   &::before {
     content: "";
@@ -16,7 +16,7 @@
     width: 16px;
     height: 16px;
     box-shadow: 0 -4px 23px rgb(0 0 0 / 15%);
-    background-color: #fff;
+    background-color: var(--color-white);
     transform: translate(50%, -50%) rotate(-45deg);
     clip-path:
       polygon(
