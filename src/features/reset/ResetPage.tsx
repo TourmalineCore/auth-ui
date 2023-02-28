@@ -1,60 +1,43 @@
 import {
-  useState, ChangeEvent, FormEvent,
+  useState, FormEvent,
 } from 'react';
 
-import { Input } from '@tourmalinecore/react-tc-ui-kit';
-
-import { Link } from 'react-router-dom';
-import arrow from '../../assets/img/arrow.png';
 import { api } from '../../common/api';
+import emailIcon from '../../assets/img/icon-email.svg';
+
 import LoginForm from '../../components/LoginForm/LoginForm';
+import InputEmailDomain from '../../components/Input/InputEmailDomain';
 
 function ResetPage() {
   const [login, setLogin] = useState('');
   const [isSuccessful, setIsSuccessful] = useState(false);
 
-  const [triedToSubmit, setTriedToSubmit] = useState(false);
+  const successfulMessage = isSuccessful ? 'We have sent a link to reset your password to your email. Check your email or change the entered data.' : '';
 
   return (
-    <div className="reset-page">
+    <div className="background-img-page reset-page">
       <LoginForm
         onSubmit={handleFormSubmit}
         buttonText="Send"
+        title="Reset Password"
+        subtitle="Enter your email, a reset link will be sent to it"
+        buttonDisabled={false}
+        backPath="/auth"
+        errorMessage={successfulMessage}
       >
-        <Link to="/auth" className="reset-page__back-link">
-          <img src={arrow} alt="Link back to auth page" />
-        </Link>
-
-        <h1 className="reset-page__title">Reset Password</h1>
-        <div className="reset-page__description">Enter your email, a reset link will be sent to it</div>
-
-        <div className="reset-page__inner">
-          <Input
-            id="Email"
-            type="text"
-            label="Email"
-            className="reset-page__input"
-            value={login}
-            isInvalid={!login && triedToSubmit}
-            validationMessages={['Поле должно быть заполнено']}
-            isMessagesAbsolute
-            onChange={(event: ChangeEvent<HTMLInputElement>) => setLogin(event.target.value)}
-          />
-          <small className="reset-page__prefix">
-            @tourmalinecore.com
-          </small>
-        </div>
-        {isSuccessful && (
-          <div className="reset-page__text">We have sent a link to reset your password to your email. Check your email or change the entered data.</div>
-        )}
+        <InputEmailDomain
+          id="reset"
+          label="Email"
+          iconSrc={emailIcon}
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
+        />
       </LoginForm>
     </div>
   );
 
   async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    setTriedToSubmit(true);
 
     if (login) {
       try {

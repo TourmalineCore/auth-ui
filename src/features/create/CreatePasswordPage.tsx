@@ -2,8 +2,6 @@ import {
   useState, ChangeEvent, FormEvent,
 } from 'react';
 
-import { Input } from '@tourmalinecore/react-tc-ui-kit';
-
 import { clsx } from 'clsx';
 import { useSearchParams } from 'react-router-dom';
 import { api } from '../../common/api';
@@ -12,14 +10,13 @@ import { useValidation } from '../../common/hooks/useValidation';
 import Tooltip from '../../components/Tooltip/Tooltip';
 
 import { setLogin } from '../../common/authService';
-import { useAuthenticated } from '../../common/hooks/useAuthenticared';
+import { useAuthenticated } from '../../common/hooks/useAuthenticated';
+import InputPassword from '../../components/Input/InputPassword';
 
 function CreatePasswordPage() {
   useAuthenticated();
 
   const [password, setPassword] = useState('');
-
-  const [triedToSubmit, setTriedToSubmit] = useState(false);
   const [isTooltip, setIsTooltip] = useState(false);
 
   const [searchParams] = useSearchParams();
@@ -28,41 +25,37 @@ function CreatePasswordPage() {
     minLenght,
     isContainsNumber,
     isContainsUppercaseLetter,
+    isContainsLowercaseLetter,
+    isContainsSpecialCharacters,
     isValid,
   } = useValidation(password, {
     minLenght: 8,
     isContainsNumber: true,
     isContainsUppercaseLetter: true,
+    isContainsLowercaseLetter: true,
+    isContainsSpecialCharacters: true,
   });
 
   const login = searchParams.get('login');
   const userResetPasswordToken = searchParams.get('userResetPasswordToken');
 
   return (
-    <div className="create-password-page">
+    <div className="background-img-page create-password-page">
       <LoginForm
         onSubmit={handleFormSubmit}
-        buttonText="Done"
+        buttonText="Login"
         buttonDisabled={isValid}
+        title="Sign in"
+        subtitle="Create a password for"
+        email={login}
       >
-
-        <h1 className="create-password-page__title">Create password</h1>
-
-        <div className="create-password-page__login">
-          Логин:
-          {' '}
-          {login || ''}
-        </div>
         <div className="create-password-page__inner">
-          <Input
+          <InputPassword
             id="password"
             type="password"
             label="Create password"
             className="create-password-page__input"
             value={password}
-            isInvalid={!password && triedToSubmit}
-            validationMessages={['Поле должно быть заполнено']}
-            isMessagesAbsolute
             onChange={(event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
             onFocus={() => setIsTooltip(true)}
             onBlur={() => setIsTooltip(false)}
@@ -72,14 +65,35 @@ function CreatePasswordPage() {
           {(isTooltip || password) && isValid && (
             <Tooltip className="create-password-page__tooltip">
               <ul className="create-password-page__required-list">
-                <li className={clsx({ 'create-password-page__valid': minLenght })}>
-                  больше 8
+                <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': minLenght })}>
+                  <span className="create-password-page__checkbox">
+                    {minLenght && <span className="create-password-page__checkmark" />}
+                  </span>
+                  <span>Minimum of 8 characters</span>
                 </li>
-                <li className={clsx({ 'create-password-page__valid': isContainsUppercaseLetter })}>
-                  с большой буквы
+                <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsUppercaseLetter })}>
+                  <span className="create-password-page__checkbox">
+                    {isContainsUppercaseLetter && <span className="create-password-page__checkmark" />}
+                  </span>
+                  <span>Contains an uppercase letter</span>
                 </li>
-                <li className={clsx({ 'create-password-page__valid': isContainsNumber })}>
-                  с цифрой
+                <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsLowercaseLetter })}>
+                  <span className="create-password-page__checkbox">
+                    {isContainsLowercaseLetter && <span className="create-password-page__checkmark" />}
+                  </span>
+                  <span>Contains an lowercase letter</span>
+                </li>
+                <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsNumber })}>
+                  <span className="create-password-page__checkbox">
+                    {isContainsNumber && <span className="create-password-page__checkmark" />}
+                  </span>
+                  <span>Contains a number (0-9)</span>
+                </li>
+                <li className={clsx('create-password-page__validation-item', { 'create-password-page__validation-item--valid': isContainsSpecialCharacters })}>
+                  <span className="create-password-page__checkbox">
+                    {isContainsSpecialCharacters && <span className="create-password-page__checkmark" />}
+                  </span>
+                  <span>Contains a special symbol</span>
                 </li>
               </ul>
             </Tooltip>
@@ -93,11 +107,9 @@ function CreatePasswordPage() {
   async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    setTriedToSubmit(true);
-
     if (password) {
       try {
-        await api.post('/auth/create-password', {
+        await api.post('/auth/change-password', {
           login,
           userResetPasswordToken,
           password,
