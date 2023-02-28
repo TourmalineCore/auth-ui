@@ -107,7 +107,7 @@ function ChangePasswordPage() {
 
     if (password) {
       try {
-        await api.post('/auth/create-password', {
+        await api.post('/auth/change-password', {
           login,
           userResetPasswordToken,
           password,
