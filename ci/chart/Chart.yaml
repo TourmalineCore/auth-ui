@@ -1,5 +1,0 @@
-apiVersion: v1
-name: inner-circle-auth-ui
-description: Chart for Inner Circle Auth UI
-type: application
-version: 1.0.0
