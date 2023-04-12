@@ -35,8 +35,8 @@ function ChangePasswordPage() {
     isContainsSpecialCharacters: true,
   });
 
-  const login = searchParams.get('login');
-  const userResetPasswordToken = searchParams.get('userResetPasswordToken');
+  const login = searchParams.get('corporateEmail');
+  const passwordResetToken = searchParams.get('passwordResetToken');
 
   return (
     <div className="background-img-page change-password-page">
@@ -107,10 +107,10 @@ function ChangePasswordPage() {
 
     if (password) {
       try {
-        await api.post('/auth/change-password', {
-          login,
-          userResetPasswordToken,
-          password,
+        await api.put('/auth/change-password', {
+          corporateEmail: login,
+          passwordResetToken,
+          newPassword: password,
         });
 
         await setLogin({ login, password });
