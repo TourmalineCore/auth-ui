@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - feature/deploy-to-new-cluster
   pull_request:
 
 env:
@@ -43,5 +44,5 @@ jobs:
             --set "extraConfigMapEnvVars.API_ROOT=${{ secrets.DEV_API_ROOT }}" \
             --set "extraConfigMapEnvVars.ENV_KEY=${{ secrets.DEV_ENV_KEY }}" \
             "${RELEASE_NAME}" \
-            bitnami/nginx
+            bitnami/nginx --version 15.0.2
           kubeconfig: "${{ secrets.DEV_KUBECONFIG }}"
