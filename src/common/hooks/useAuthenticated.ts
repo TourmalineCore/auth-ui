@@ -7,7 +7,7 @@ export const useAuthenticated = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      window.location.href = '/analytics';
+      window.location.href = '/employees';
     }
   }, [isAuthenticated]);
 };
