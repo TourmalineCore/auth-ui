@@ -40,7 +40,6 @@ jobs:
             helm repo add bitnami https://charts.bitnami.com/bitnami
             helm upgrade --install --namespace dev-inner-circle --create-namespace --values ./ci/values-custom.yaml \
             --set-string "image.tag=${{ github.sha }}" \
-            --set-string "ingress.enabled=true" \
             "${RELEASE_NAME}" \
             bitnami/nginx --version 15.0.2
           kubeconfig: "${{ secrets.DEV_KUBECONFIG }}"
