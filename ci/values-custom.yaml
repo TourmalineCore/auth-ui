@@ -62,12 +62,12 @@ containerPorts:
   https: ""
 
 # Here stored regular vars that passed to the pod environment
-extraConfigMapEnvVars: {}
+extraConfigMapEnvVars: 
   # LINK_TO_SALARY_SERVICE: "/fdsfdsf"
   # LINK_TO_ACCOUNT_SERVICE: "/"
 
 # Here stored secrets that passed to the pod environment. You should never store them in this file.
-extraSecretEnvVars: {}
+extraSecretEnvVars: 
   # Section1__SuperPuperSecretVar: mega-secret
   # Section2__Email: email@email.com
   # Section2__Login: login
