@@ -53,10 +53,6 @@ args: []
 podAnnotations:
   checksum/config: "{{ include (print $.Template.BasePath \"/extra-list.yaml\") . | sha256sum }}"
 
-## Configures the ports NGINX listens on
-## @param containerPorts.http Sets http port inside NGINX container
-## @param containerPorts.https Sets https port inside NGINX container
-##
 containerPorts:
   http: 80
   https: ""
