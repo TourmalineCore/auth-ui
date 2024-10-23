@@ -26,20 +26,20 @@ image:
   ## pullSecrets:
   ##   - myRegistryKeySecretName
   ##
-  pullSecrets: []
+  pullSecrets: {}
     # https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_images.tpl#L49
     # - "{{ include \"common.names.fullname\" . }}-docker-secret"
   debug: false
 ## @param hostAliases Deployment pod host aliases
 ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
 ##
-hostAliases: []
+hostAliases: {}
 ## Command and args for running the container (set to default if not set). Use array form
 ## @param command Override default container command (useful when using custom images)
 ## @param args Override default container args (useful when using custom images)
 ##
-command: []
-args: []
+command: {}
+args: {}
 ## @param extraEnvVars Extra environment variables to be set on NGINX containers
 ## E.g:
 ## extraEnvVars:
@@ -69,7 +69,7 @@ extraSecretEnvVars: {}
   # Section2__Login: login
 
 
-extraEnvVars: []
+extraEnvVars: {}
 
 extraSecretEnvVarsEncoded: |
   {{- range $k, $v := .Values.extraSecretEnvVars }}
@@ -89,7 +89,7 @@ extraEnvVarsCM: "{{ include \"common.names.fullname\" . }}"
 # If you need secrets, than use commented line below 
 # extraEnvVarsSecret: "{{ include \"common.names.fullname\" . }}"
 # else use
-extraEnvVarsSecret: ""
+extraEnvVarsSecret: {}
 
 # extraEnvVarsSecret: {{ if .Values.extraSecretEnvVars }} "{{ include \"common.names.fullname\" . }}" {{ else }} "" {{ end }}
   
