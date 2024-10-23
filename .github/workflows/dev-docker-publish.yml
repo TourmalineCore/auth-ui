@@ -39,7 +39,11 @@ jobs:
             RELEASE_NAME=auth-ui
             helm repo add bitnami https://charts.bitnami.com/bitnami
             helm upgrade --install --namespace dev-inner-circle --create-namespace --values ./ci/values-custom.yaml \
-            --set-string "image.tag=${{ github.sha }}" \
+            --set "image.tag=${{ github.sha }}" \
+            --set "ingress.enabled=true" \
+            --set "ingress.hostname=${{ secrets.DEV_HOST }}" \
+            --set "extraConfigMapEnvVars.API_ROOT=${{ secrets.DEV_API_ROOT }}" \
+            --set "extraConfigMapEnvVars.ENV_KEY=${{ secrets.DEV_ENV_KEY }}" \
             "${RELEASE_NAME}" \
             bitnami/nginx --version 15.0.2
           kubeconfig: "${{ secrets.DEV_KUBECONFIG }}"
