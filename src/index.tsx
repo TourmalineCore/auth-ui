@@ -3,8 +3,6 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 // above code required for ie11 support
 
-import '@tourmalinecore/react-tc-ui-kit/es/index.css';
-
 import './styles/index.scss';
 
 import React from 'react';
