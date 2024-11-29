@@ -1,2 +1,2 @@
 ENV_KEY:dev
-API_ROOT:https://innercircle.dev.tourmalinecore.com/api
+API_ROOT:https://innercircle.tourmalinecore.com/api
