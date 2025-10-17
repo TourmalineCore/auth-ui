@@ -8,7 +8,7 @@ import svgr from 'vite-plugin-svgr'
 
 const LOCAL_ENV_PORT = 30090
 // Set the port for the layout based on the environment
-const AUTH_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4005
+const AUTH_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4000
 
 // if (VITE_BASE_URL === undefined) set default local docker url
 // const LAYOUT_URL = process.env.VITE_BASE_URL ?? `http://localhost:4455`
