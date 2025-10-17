@@ -1,18 +1,18 @@
-import React, { ReactNode } from 'react';
-import { clsx } from 'clsx';
+import "./Tooltip.scss"
 
-function Tooltip({
+import { ReactNode } from 'react'
+import { clsx } from 'clsx'
+
+export function Tooltip({
   className,
   children,
 }: {
-  className?: string;
-  children: ReactNode;
+  className?: string,
+  children: ReactNode,
 }) {
   return (
-    <div className={clsx('tooltip', className)}>
+    <div className={clsx(`tooltip`, className)}>
       {children}
     </div>
-  );
+  )
 }
-
-export default Tooltip;

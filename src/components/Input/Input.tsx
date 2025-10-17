@@ -1,15 +1,17 @@
-import clsx from 'clsx';
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import "./Input.scss"
+
+import clsx from 'clsx'
+import { DetailedHTMLProps, InputHTMLAttributes } from 'react'
 
 interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  id: string;
-  label: string;
-  description?: string;
-  type: 'text' | 'number';
-  iconSrc?: string;
+  id: string,
+  label: string,
+  description?: string,
+  type: 'text' | 'number',
+  iconSrc?: string,
 }
 
-function Input({
+export function Input({
   id,
   label,
   className,
@@ -18,10 +20,17 @@ function Input({
   ...props
 }: InputProps) {
   return (
-    <div className={clsx('input', className)}>
-      <label htmlFor={id} className="input__label">{label}</label>
+    <div className={clsx(`input`, className)}>
+      <label htmlFor={id}
+        className="input__label">{label}</label>
       <div className="input__inner">
-        {iconSrc && <img className="input__icon" src={iconSrc} alt="Input Icon" />}
+        {iconSrc && 
+          <img 
+            className="input__icon"
+            src={iconSrc}
+            alt="Input Icon" 
+          />
+        }
         <input
           id={id}
           type={type}
@@ -29,9 +38,6 @@ function Input({
           {...props}
         />
       </div>
-
     </div>
-  );
+  )
 }
-
-export default Input;

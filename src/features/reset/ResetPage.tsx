@@ -1,18 +1,22 @@
-import {
-  useState, FormEvent,
-} from 'react';
+import {useState, FormEvent} from 'react'
 
-import { api } from '../../common/api';
-import emailIcon from '../../assets/img/icon-email.svg';
+import { api } from '../../common/api'
+import emailIcon from '../../assets/img/icon-email.svg'
 
-import LoginForm from '../../components/LoginForm/LoginForm';
-import InputEmailDomain from '../../components/Input/InputEmailDomain';
+import { LoginForm } from '../../components/LoginForm/LoginForm'
+import { InputEmailDomain } from '../../components/Input/InputEmailDomain'
 
-function ResetPage() {
-  const [login, setLogin] = useState('');
-  const [isSuccessful, setIsSuccessful] = useState(false);
+export function ResetPage() {
+  const [
+    login,
+    setLogin,
+  ] = useState(``)
+  const [
+    isSuccessful,
+    setIsSuccessful,
+  ] = useState(false)
 
-  const successfulMessage = isSuccessful ? 'We have sent a link to reset your password to your email. Check your email or change the entered data.' : '';
+  const successfulMessage = isSuccessful ? `We have sent a link to reset your password to your email. Check your email or change the entered data.` : ``
 
   return (
     <div className="background-img-page reset-page">
@@ -34,21 +38,20 @@ function ResetPage() {
         />
       </LoginForm>
     </div>
-  );
+  )
 
   async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (login) {
       try {
-        await api.post(`/auth/reset?corporateEmail=${login}@tourmalinecore.com`);
+        await api.post(`/auth/reset?corporateEmail=${login}@tourmalinecore.com`)
 
-        setIsSuccessful(true);
-      } catch (e) {
-        setLogin('');
+        setIsSuccessful(true)
+      }
+      catch (e) {
+        setLogin(``)
       }
     }
   }
 }
-
-export default ResetPage;

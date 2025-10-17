@@ -41,7 +41,7 @@ jobs:
             --set "ingress.enabled=true" \
             --set "ingress.hostname=${{ secrets.DEV_HOST }}" \
             --set "extraConfigMapEnvVars.API_ROOT=${{ secrets.DEV_API_ROOT }}" \
-            --set "extraConfigMapEnvVars.ENV_KEY=${{ secrets.DEV_ENV_KEY }}" \
+            --set "extraConfigMapEnvVars.VITE_BASE_URL=${{ secrets.BASE_URL }}" \
             "${RELEASE_NAME}" \
             bitnami/nginx --version 15.0.2
           kubeconfig: "${{ secrets.DEV_KUBECONFIG }}"
