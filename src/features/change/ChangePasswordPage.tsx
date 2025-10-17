@@ -1,24 +1,32 @@
-import {
-  useState, ChangeEvent, FormEvent,
-} from 'react';
+import "./ChangePasswordPage.scss"
 
-import { clsx } from 'clsx';
-import { useSearchParams } from 'react-router-dom';
-import { api } from '../../common/api';
-import LoginForm from '../../components/LoginForm/LoginForm';
-import { useValidation } from '../../common/hooks/useValidation';
-import Tooltip from '../../components/Tooltip/Tooltip';
+import {useState, ChangeEvent, FormEvent} from 'react'
 
-import { setLogin } from '../../common/authService';
-import { useAuthenticated } from '../../common/hooks/useAuthenticated';
-import InputPassword from '../../components/Input/InputPassword';
+import { clsx } from 'clsx'
+import { useSearchParams } from 'react-router-dom'
+import { api } from '../../common/api'
+import { LoginForm } from '../../components/LoginForm/LoginForm'
+import { useValidation } from '../../common/hooks/useValidation'
+import { Tooltip } from '../../components/Tooltip/Tooltip'
 
-function ChangePasswordPage() {
-  useAuthenticated();
+import { setLogin } from '../../common/authService'
+import { useAuthenticated } from '../../common/hooks/useAuthenticated'
+import { InputPassword } from '../../components/Input/InputPassword'
 
-  const [password, setPassword] = useState('');
-  const [isTooltip, setIsTooltip] = useState(false);
-  const [searchParams] = useSearchParams();
+export function ChangePasswordPage() {
+  useAuthenticated()
+
+  const [
+    password,
+    setPassword,
+  ] = useState(``)
+  const [
+    isTooltip,
+    setIsTooltip,
+  ] = useState(false)
+  const [
+    searchParams,
+  ] = useSearchParams()
 
   const {
     minLenght,
@@ -33,10 +41,10 @@ function ChangePasswordPage() {
     isContainsUppercaseLetter: true,
     isContainsLowercaseLetter: true,
     isContainsSpecialCharacters: true,
-  });
+  })
 
-  const login = searchParams.get('corporateEmail');
-  const passwordResetToken = searchParams.get('passwordResetToken');
+  const login = searchParams.get(`corporateEmail`)
+  const passwordResetToken = searchParams.get(`passwordResetToken`)
 
   return (
     <div className="background-img-page change-password-page">
@@ -63,31 +71,41 @@ function ChangePasswordPage() {
           {(isTooltip || password) && isValid && (
             <Tooltip className="change-password-page__tooltip">
               <ul className="change-password-page__required-list">
-                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': minLenght })}>
+                <li className={clsx(`change-password-page__validation-item`, {
+                  'change-password-page__validation-item--valid': minLenght, 
+                })}>
                   <span className="change-password-page__checkbox">
                     {minLenght && <span className="change-password-page__checkmark" />}
                   </span>
                   <span>Minimum of 8 characters</span>
                 </li>
-                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsUppercaseLetter })}>
+                <li className={clsx(`change-password-page__validation-item`, {
+                  'change-password-page__validation-item--valid': isContainsUppercaseLetter, 
+                })}>
                   <span className="change-password-page__checkbox">
                     {isContainsUppercaseLetter && <span className="change-password-page__checkmark" />}
                   </span>
                   <span>Contains an uppercase letter</span>
                 </li>
-                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsLowercaseLetter })}>
+                <li className={clsx(`change-password-page__validation-item`, {
+                  'change-password-page__validation-item--valid': isContainsLowercaseLetter, 
+                })}>
                   <span className="change-password-page__checkbox">
                     {isContainsLowercaseLetter && <span className="change-password-page__checkmark" />}
                   </span>
                   <span>Contains an lowercase letter</span>
                 </li>
-                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsNumber })}>
+                <li className={clsx(`change-password-page__validation-item`, {
+                  'change-password-page__validation-item--valid': isContainsNumber, 
+                })}>
                   <span className="change-password-page__checkbox">
                     {isContainsNumber && <span className="change-password-page__checkmark" />}
                   </span>
                   <span>Contains a number (0-9)</span>
                 </li>
-                <li className={clsx('change-password-page__validation-item', { 'change-password-page__validation-item--valid': isContainsSpecialCharacters })}>
+                <li className={clsx(`change-password-page__validation-item`, {
+                  'change-password-page__validation-item--valid': isContainsSpecialCharacters, 
+                })}>
                   <span className="change-password-page__checkbox">
                     {isContainsSpecialCharacters && <span className="change-password-page__checkmark" />}
                   </span>
@@ -100,25 +118,27 @@ function ChangePasswordPage() {
 
       </LoginForm>
     </div>
-  );
+  )
 
   async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (password) {
       try {
-        await api.put('/auth/change-password', {
+        await api.put(`/auth/change-password`, {
           corporateEmail: login,
           passwordResetToken,
           newPassword: password,
-        });
+        })
 
-        await setLogin({ login, password });
-      } catch (e) {
-        setPassword('');
+        await setLogin({
+          login,
+          password, 
+        })
+      }
+      catch (e) {
+        setPassword(``)
       }
     }
   }
 }
-
-export default ChangePasswordPage;

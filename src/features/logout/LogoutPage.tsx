@@ -1,17 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
-import { authService } from '../../common/authService';
+import { authService } from '../../common/authService'
 
-function LogoutPage() {
+export function LogoutPage() {
   useEffect(() => {
-    authService.setLoggedOut();
+    authService.setLoggedOut()
 
-    window.location.href = '/auth';
-  }, []);
+    window.location.href = `/auth`
+  }, [])
 
   return (
     <div>You are now logged out</div>
-  );
+  )
 }
-
-export default LogoutPage;

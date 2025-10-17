@@ -1,4 +1,4 @@
 type ThemeElement = {
-  key: string;
-  pickerBtnColor: string;
+  key: string,
+  pickerBtnColor: string,
 };

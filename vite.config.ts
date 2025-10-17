@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/quotes */
 import { defineConfig } from 'vite'
 // correct version of federation https://github.com/originjs/vite-plugin-federation/issues/670
 import react from '@vitejs/plugin-react'
@@ -14,8 +13,8 @@ const AUTH_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4005
 // if (VITE_BASE_URL === undefined) set default local docker url
 // const LAYOUT_URL = process.env.VITE_BASE_URL ?? `http://localhost:4455`
 
-// for run in local docker use `/`, and for others use `/books` path
-// const BOOKS_PATH = LAYOUT_URL === `http://localhost:4455` ? `/` : `/books`
+// for run in local docker use `/`, and for others use `/auth` path
+// const AUTH_PATH = LAYOUT_URL === `http://localhost:4455` ? `/` : `/auth`
 
 // for run in local docker use `http://localhost:4455/assets..`, and for others use `../layout/assets..` path
 // const LAYOUT_PATH = LAYOUT_URL === `http://localhost:4455` ? `` : `/layout`
@@ -43,7 +42,7 @@ export default defineConfig({
   define: {
     // Set a global variable to handle different base paths in various environments
     // This variable is used in HTML files to dynamically adjust script paths
-    // In production, it will be `/books`, while in development it will be an empty string.
+    // In production, it will be `/auth`, while in development it will be an empty string.
     // Example usage in HTML: <script src="%VITE_BASE_PATH%/env-config.js"></script>
     'import.meta.env.VITE_BASE_PATH': JSON.stringify(
       process.env.NODE_ENV === `production` ? `/auth` : ``,
