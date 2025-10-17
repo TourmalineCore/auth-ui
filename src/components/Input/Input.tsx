@@ -24,9 +24,13 @@ export function Input({
       <label htmlFor={id}
         className="input__label">{label}</label>
       <div className="input__inner">
-        {iconSrc && <img className="input__icon"
-          src={iconSrc}
-          alt="Input Icon" />}
+        {iconSrc && 
+          <img 
+            className="input__icon"
+            src={iconSrc}
+            alt="Input Icon" 
+          />
+        }
         <input
           id={id}
           type={type}
@@ -34,7 +38,6 @@ export function Input({
           {...props}
         />
       </div>
-
     </div>
   )
 }
