@@ -51,10 +51,25 @@ export function LoginForm({
           src={logo}
           alt="Tourmaline Core Logo" />
 
-        <h1 className="login-form__title">{title}</h1>
-        <h2 className="login-form__subtitle">
+        <h1 
+          className="login-form__title"
+          data-cy="login-form-title"
+        >
+          {title}
+        </h1>
+        <h2 
+          className="login-form__subtitle"
+          data-cy="login-form-subtitle"
+        >
           {subtitle}
-          {email && (<span className="login-form__email">{email}</span>)}
+          {email && 
+          (<span 
+            className="login-form__email"
+            data-cy="login-form-email"
+          >
+            {email}
+          </span>
+          )}
         </h2>
 
         <form className="login-form__form"
@@ -65,6 +80,7 @@ export function LoginForm({
               type="submit"
               disabled={buttonDisabled}
               className="login-form__submit-btn"
+              data-cy="login-form-submit"
             >
               {buttonText}
             </Button>
