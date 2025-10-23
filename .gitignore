@@ -37,9 +37,3 @@ cypress.config*
 env-config.js
 
 .__mf__temp
-
-# cy report
-cypress-image-diff-html-report
-
-# cy comparison snapshots
-cypress-image-diff-screenshots/comparison
