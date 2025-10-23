@@ -56,8 +56,7 @@ describe(`Auth Flow E2E`, () => {
       .click()
 
     cy
-      .window()
-      .its(`location.href`)
+      .url()
       .should(`not.include`, `/auth`)
 
     cy
