@@ -4,8 +4,6 @@ import '../env-config'
 /// <reference types="cypress" />
 
 // styles
-import 'react-datepicker/dist/react-datepicker.css'
-
 import '../../src/styles/index.scss'
 
 // commands
