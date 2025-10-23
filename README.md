@@ -23,13 +23,13 @@ npm run docker:run
 
 ## Component tests
 
-To run component tests in console you need enter the command
+To run component tests in console you need to enter the command
 
 ```
 npm run cypress:run:component
 ```
 
-To open cypress to run component tests you need enter the command
+To open cypress to run component tests you need to enter the command
 
 ```
 npm run cypress:open:component
@@ -37,7 +37,7 @@ npm run cypress:open:component
 
 ## E2E tests
 
-For e2e tests you must to ask your colleagues for the `cypress.config.prod.ts` file if it needs
+For e2e tests you must ask your colleagues for the cypress.config.prod.ts file if necessary
 
 to open cypress use this command
 
