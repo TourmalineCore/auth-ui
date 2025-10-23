@@ -3,11 +3,13 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
+    "cypress/globals": true,
   },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:cypress/recommended",
   ],
   ignorePatterns: [
     "dist",
@@ -36,6 +38,7 @@ module.exports = {
   },
   rules: {
     // disable chain cy error
+    'cypress/unsafe-to-chain-command': 'off',
     "no-console": "error",
     "react-refresh/only-export-components": [
       "warn",
