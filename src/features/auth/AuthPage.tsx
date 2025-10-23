@@ -44,6 +44,7 @@ export function AuthPage() {
             <Input
               id="login"
               className="auth-page__input"
+              data-cy="login-input"
               type="text"
               label="Login"
               iconSrc={loginIcon}
@@ -56,6 +57,7 @@ export function AuthPage() {
             <InputPassword
               id="password"
               className="auth-page__input"
+              data-cy="password-input"
               label="Password"
               value={formData.password}
               placeholder="8+ characters"
@@ -66,12 +68,17 @@ export function AuthPage() {
             />
 
             <Link to="/auth/reset"
-              className="auth-page__forget-link">Forgot password?</Link>
+              className="auth-page__forget-link"
+              data-cy="forget-link"
+            >
+              Forgot password?
+            </Link>
 
             <div className="auth-page__button-box">
               <Button
                 type="submit"
                 className="auth-page__button"
+                data-cy="submit-button"
                 disabled={!formData.login || !formData.password}
               >
                 Log In

@@ -1,0 +1,27 @@
+import { defineConfig } from "cypress"
+
+// eslint-disable-next-line import/no-default-export
+export default defineConfig({
+  e2e: {
+    viewportWidth: 1200,
+    viewportHeight: 660,
+    specPattern: `cypress/e2e/**/*.cy.ts`,
+    baseUrl: process.env.CYPRESS_BASE_URL,
+    env: {
+      API_ROOT: process.env.API_ROOT,
+      VITE_BASE_URL: process.env.VITE_BASE_URL,
+      USER_LOGIN: process.env.USER_LOGIN,
+      USER_PASSWORD: process.env.USER_PASSWORD,
+    },
+    video: true,
+    screenshotOnRunFailure: true,
+  },
+  component: {
+    video: true,
+    screenshotOnRunFailure: true,
+    devServer: {
+      framework: `react`,
+      bundler: `vite`,
+    },
+  },
+})
