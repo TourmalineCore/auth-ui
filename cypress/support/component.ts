@@ -14,7 +14,6 @@ declare global {
   namespace Cypress {
     interface Chainable {
       mount: typeof mount,
-      compareSnapshot(name: string, options?: any): Chainable<Element>,
     }
   }
 }
