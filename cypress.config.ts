@@ -16,12 +16,4 @@ export default defineConfig({
     video: true,
     screenshotOnRunFailure: true,
   },
-  component: {
-    video: true,
-    screenshotOnRunFailure: true,
-    devServer: {
-      framework: `react`,
-      bundler: `vite`,
-    },
-  },
 })
