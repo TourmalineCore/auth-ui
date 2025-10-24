@@ -6,7 +6,7 @@ export default defineConfig({
     viewportWidth: 1200,
     viewportHeight: 660,
     specPattern: `cypress/e2e/**/*.cy.ts`,
-    baseUrl: process.env.CYPRESS_BASE_URL,
+    baseUrl: process.env.VITE_BASE_URL,
     env: {
       API_ROOT: process.env.API_ROOT,
       VITE_BASE_URL: process.env.VITE_BASE_URL,
