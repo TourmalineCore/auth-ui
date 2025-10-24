@@ -11,7 +11,7 @@ describe(`Auth Flow E2E`, () => {
   SHOULD be redirected back to the Auth page
   `, () => {
     cy
-      .visit(`/auth`)
+      .visit(`/`)
 
     cy
       .getByData(`login-input`)
