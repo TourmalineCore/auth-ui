@@ -1,3 +1,4 @@
 export const {
   API_ROOT,
-} = window.__ENV__;
+  VITE_BASE_URL,
+} = window.__ENV__
