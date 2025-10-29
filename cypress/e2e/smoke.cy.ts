@@ -49,7 +49,9 @@ describe(`Auth Flow E2E`, () => {
     cy  
       .getByData(`password-input`)
       .clear()
-      .type(Cypress.env(`USER_PASSWORD`))
+      .type(Cypress.env(`USER_PASSWORD`), {
+        delay: 0,
+      })
 
     cy
       .getByData(`submit-button`)
