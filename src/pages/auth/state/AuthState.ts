@@ -34,4 +34,8 @@ export class AuthState {
       ...newValue,
     }
   }
+
+  setErrorMessage(newValue: string) {
+    this._errorMessage = newValue
+  }
 }
