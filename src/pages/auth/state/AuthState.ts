@@ -23,4 +23,15 @@ export class AuthState {
   get errorMessage() {
     return this._errorMessage
   }
+
+  get isFormValid() {
+    return this._formData.login !== '' && this._formData.password !== ''
+  }
+
+  setFormData(newValue: Partial<AuthFormData>) {
+    this._formData = {
+      ...this._formData,
+      ...newValue,
+    }
+  }
 }
