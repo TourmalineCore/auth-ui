@@ -3,8 +3,9 @@ import { AuthState } from './AuthState'
 
 describe(`AuthState`, () => {
   describe(`Initialization`, initializationTests)
-  describe(`FormData`, FormDataTests)
-  describe(`FormValidation`, FormValidationTests)
+  describe(`Form Data`, FormDataTests)
+  describe(`Form Validation`, FormValidationTests)
+  describe(`Error Message`, ErrorMessageTests)
 })
 
 function initializationTests() {
@@ -91,5 +92,20 @@ function FormValidationTests() {
       .to
       .be
       .true
+  })
+}}
+
+function ErrorMessageTests() {
+  const authState = new AuthState()
+
+  it(`
+  GIVEN AuthState
+  WHEN pass errorMessage
+  SHOULD set errorMessage
+  `, () => {
+    const errorMessage = 'Invalid credentials'
+    authState.setErrorMessage(errorMessage)
+    
+    expect(authState.errorMessage).to.equal(errorMessage)
   })
 }
