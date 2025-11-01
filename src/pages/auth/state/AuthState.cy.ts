@@ -6,6 +6,7 @@ describe(`AuthState`, () => {
   describe(`Form Data`, FormDataTests)
   describe(`Form Validation`, FormValidationTests)
   describe(`Error Message`, ErrorMessageTests)
+  describe(`Reset`, ResetTests)
 })
 
 function initializationTests() {
@@ -93,7 +94,7 @@ function FormValidationTests() {
       .be
       .true
   })
-}}
+}
 
 function ErrorMessageTests() {
   const authState = new AuthState()
@@ -107,5 +108,25 @@ function ErrorMessageTests() {
     authState.setErrorMessage(errorMessage)
     
     expect(authState.errorMessage).to.equal(errorMessage)
+  })
+}
+
+function ResetTests() {
+  const authState = new AuthState()
+
+  it(`
+  GIVEN AuthState
+  WHEN reset password
+  SHOULD have empty string for password in state
+  `, () => {
+    authState.setFormData({ 
+      login: `test@example.com`, 
+      password: `123` 
+    })
+
+    authState.resetPassword()
+    
+    expect(authState.formData.login).to.equal(`test@example.com`)
+    expect(authState.formData.password).to.equal(``)
   })
 }
