@@ -53,7 +53,9 @@ export const AuthContent = observer(({
               iconSrc={loginIcon}
               value={authState.formData.login}
               onChange={
-                (event: ChangeEvent<HTMLInputElement>) => authState.setFormData({ login: event.target.value })
+                (event: ChangeEvent<HTMLInputElement>) => authState.setFormData({
+                  login: event.target.value, 
+                })
               }
             />
             <InputPassword
@@ -64,7 +66,9 @@ export const AuthContent = observer(({
               value={authState.formData.password}
               placeholder="8+ characters"
               onChange={
-                (event: ChangeEvent<HTMLInputElement>) => authState.setFormData({ password: event.target.value })
+                (event: ChangeEvent<HTMLInputElement>) => authState.setFormData({
+                  password: event.target.value, 
+                })
               }
             />
 

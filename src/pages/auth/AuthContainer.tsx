@@ -21,15 +21,16 @@ export const AuthContainer = observer(() => {
     event.preventDefault()
     
     if (authState.isFormValid) {
-      authState.setErrorMessage('')
+      authState.setErrorMessage(``)
 
       try {
         await setLogin({
           login: authState.formData.login,
           password: authState.formData.password,
         })
-      } catch (e) {
-        authState.setErrorMessage('Error: Invalid email or password. Check the correctness of the entered data.')
+      }
+      catch (e) {
+        authState.setErrorMessage(`Error: Invalid email or password. Check the correctness of the entered data.`)
         authState.resetPassword()
       } 
     }
