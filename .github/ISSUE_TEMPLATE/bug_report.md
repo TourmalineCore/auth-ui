@@ -17,7 +17,7 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Environment:**
+**Environment**
  - Device (desktop / mobile)
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
