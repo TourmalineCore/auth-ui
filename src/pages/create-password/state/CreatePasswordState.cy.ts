@@ -41,7 +41,9 @@ function passwordManagementTests() {
   WHEN setPassword is called with new value
   SHOULD update password
   `, () => {
-    createPasswordState.setPassword(`password`)
+    createPasswordState.setPassword({
+      newValue: `password`
+    })
 
     expect(createPasswordState.password)
       .to
@@ -53,8 +55,12 @@ function passwordManagementTests() {
   WHEN setPassword is called with a different value
   SHOULD update password
   `, () => {
-    createPasswordState.setPassword(`password1`)
-    createPasswordState.setPassword(`password2`)
+    createPasswordState.setPassword({
+      newValue: `password1`
+    })
+    createPasswordState.setPassword({
+      newValue: `password2`
+    })
 
     expect(createPasswordState.password)
       .to

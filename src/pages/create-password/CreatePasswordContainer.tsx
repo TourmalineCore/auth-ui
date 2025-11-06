@@ -65,7 +65,9 @@ export const CreatePasswordContainer = observer(() => {
         })
       }
       catch (e) {
-        createPasswordState.setPassword(``)
+        createPasswordState.setPassword({
+          newValue: ``
+        })
       }
     }
   }

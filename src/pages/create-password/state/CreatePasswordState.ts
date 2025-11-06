@@ -16,7 +16,11 @@ export class CreatePasswordState {
     return this._isTooltipVisible
   }
 
-  setPassword(newValue: string) {
+  setPassword({
+    newValue,
+  }: {
+    newValue: string
+  }) {
     this._password = newValue
   }
 
