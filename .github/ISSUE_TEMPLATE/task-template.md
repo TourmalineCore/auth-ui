@@ -19,7 +19,7 @@ For example:
 
 **Definition of Done**
 For example: 
-1. Screenshot or tests are successful in pipeline (if applicable).
+1. Screenshot or e2e tests are successful in pipeline (if applicable).
 2. <Role> can <do something>. E.g., a user can open and close mobile menu. 
 
 **Additional Info**
