@@ -10,7 +10,9 @@ import { useAuthenticated } from '../../common/hooks/useAuthenticated'
 
 export const CreatePasswordContainer = observer(() => {
   const createPasswordState = useContext(CreatePasswordStateContext)
-  const [searchParams] = useSearchParams()
+  const [
+    searchParams,
+  ] = useSearchParams()
   useAuthenticated()
 
   const login = searchParams.get(`login`)

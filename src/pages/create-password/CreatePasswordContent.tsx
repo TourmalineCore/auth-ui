@@ -12,16 +12,16 @@ export const CreatePasswordContent = observer(({
   login,
   validation,
 }: {
-  handleFormSubmit: (event: FormEvent<HTMLFormElement>) => unknown
-  login: string | null
+  handleFormSubmit: (event: FormEvent<HTMLFormElement>) => unknown,
+  login: string | null,
   validation: {
-    minLenght: boolean
-    isContainsNumber: boolean
-    isContainsUppercaseLetter: boolean
-    isContainsLowercaseLetter: boolean
-    isContainsSpecialCharacters: boolean
-    isValid: boolean
-  }
+    minLenght: boolean,
+    isContainsNumber: boolean,
+    isContainsUppercaseLetter: boolean,
+    isContainsLowercaseLetter: boolean,
+    isContainsSpecialCharacters: boolean,
+    isValid: boolean,
+  },
 }) => {
   const createPasswordState = useContext(CreatePasswordStateContext)
 
@@ -54,7 +54,7 @@ export const CreatePasswordContent = observer(({
           {(createPasswordState.isTooltipVisible || createPasswordState.password) && validation.isValid && (
             <Tooltip className="create-password-page__tooltip">
               <ul className="create-password-page__required-list">
-                <li className={clsx('create-password-page__validation-item', {
+                <li className={clsx(`create-password-page__validation-item`, {
                   'create-password-page__validation-item--valid': validation.minLenght, 
                 })}>
                   <span className="create-password-page__checkbox">
@@ -62,7 +62,7 @@ export const CreatePasswordContent = observer(({
                   </span>
                   <span>Minimum of 8 characters</span>
                 </li>
-                <li className={clsx('create-password-page__validation-item', {
+                <li className={clsx(`create-password-page__validation-item`, {
                   'create-password-page__validation-item--valid': validation.isContainsUppercaseLetter, 
                 })}>
                   <span className="create-password-page__checkbox">
@@ -70,7 +70,7 @@ export const CreatePasswordContent = observer(({
                   </span>
                   <span>Contains an uppercase letter</span>
                 </li>
-                <li className={clsx('create-password-page__validation-item', {
+                <li className={clsx(`create-password-page__validation-item`, {
                   'create-password-page__validation-item--valid': validation.isContainsLowercaseLetter, 
                 })}>
                   <span className="create-password-page__checkbox">
@@ -78,7 +78,7 @@ export const CreatePasswordContent = observer(({
                   </span>
                   <span>Contains an lowercase letter</span>
                 </li>
-                <li className={clsx('create-password-page__validation-item', {
+                <li className={clsx(`create-password-page__validation-item`, {
                   'create-password-page__validation-item--valid': validation.isContainsNumber, 
                 })}>
                   <span className="create-password-page__checkbox">
@@ -86,7 +86,7 @@ export const CreatePasswordContent = observer(({
                   </span>
                   <span>Contains a number (0-9)</span>
                 </li>
-                <li className={clsx('create-password-page__validation-item', {
+                <li className={clsx(`create-password-page__validation-item`, {
                   'create-password-page__validation-item--valid': validation.isContainsSpecialCharacters, 
                 })}>
                   <span className="create-password-page__checkbox">

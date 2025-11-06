@@ -18,14 +18,6 @@ export const AuthContent = observer(({
 }) => {
   const authState = useContext(AuthStateContext)
 
-  const handleLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
-    authState.setFormData({ login: event.target.value })
-  }
-
-  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    authState.setFormData({ password: event.target.value })
-  }
-
   return (
     <div className="background-img-page auth-page">
 
