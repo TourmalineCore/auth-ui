@@ -1,10 +1,10 @@
 import '../../../../cypress/support/commands'
 import { CreatePasswordState } from './CreatePasswordState'
 
-
 describe(`CreatePasswordState`, () => {
   describe(`Initialization`, initializationTests)
   describe(`Password Management`, passwordManagementTests)
+  describe(`Tooltip`, tooltipTests)
 })
 
 function initializationTests() {
@@ -59,5 +59,40 @@ function passwordManagementTests() {
     expect(createPasswordState.password)
       .to
       .equal('password2')
+  })
+}
+
+function tooltipTests() {
+  let createPasswordState: CreatePasswordState
+
+  beforeEach(() => {
+    createPasswordState = new CreatePasswordState()
+  })
+
+  it(`
+  GIVEN tooltip is hidden
+  WHEN setIsTooltipVisible is called 
+  SHOULD show tooltip
+  `, () => {
+    createPasswordState.setIsTooltipVisible()
+
+    expect(createPasswordState.isTooltipVisible)
+      .to
+      .be
+      .true
+  })
+
+  it(`
+  GIVEN tooltip is visible
+  WHEN resetIsTooltipVisible is called
+  SHOULD hide tooltip
+  `, () => {
+    createPasswordState.setIsTooltipVisible()
+    createPasswordState.resetIsTooltipVisible()
+
+    expect(createPasswordState.isTooltipVisible)
+      .to
+      .be
+      .false
   })
 }
