@@ -19,4 +19,12 @@ export class CreatePasswordState {
   setPassword(newValue: string) {
     this._password = newValue
   }
+
+  setIsTooltipVisible() {
+    this._isTooltipVisible = true
+  }
+
+  resetIsTooltipVisible() {
+    this._isTooltipVisible = false
+  }
 }
