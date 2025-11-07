@@ -15,8 +15,13 @@ export const CreateOrChangePasswordContainer = observer(() => {
   ] = useSearchParams()
   useAuthenticated()
 
-  const login = searchParams.get(`login`)
-  const userResetPasswordToken = searchParams.get(`userResetPasswordToken`)
+  const isChangeMode = location.pathname.includes('change-password')
+  if(isChangeMode) {
+    createOrChangePasswordState.setIsChangeMode()
+  }
+
+  const login = searchParams.get(isChangeMode ? 'corporateEmail' : 'login')
+  const token = searchParams.get(isChangeMode ? 'passwordResetToken' : 'userResetPasswordToken')
 
   const {
     minLenght,
@@ -53,11 +58,19 @@ export const CreateOrChangePasswordContainer = observer(() => {
 
     if (createOrChangePasswordState.password) {
       try {
-        await api.post(`/auth/change-password`, {
-          login,
-          userResetPasswordToken,
-          password: createOrChangePasswordState.password,
-        })
+        if (isChangeMode) {
+          await api.put(`/auth/change-password`, {
+            corporateEmail: login,
+            passwordResetToken: token,
+            newPassword: createOrChangePasswordState.password,
+          })
+        } else {
+          await api.post(`/auth/change-password`, {
+            login,
+            userResetPasswordToken: token,
+            password: createOrChangePasswordState.password,
+          })
+        }
 
         await setLogin({
           login,
@@ -66,7 +79,7 @@ export const CreateOrChangePasswordContainer = observer(() => {
       }
       catch (e) {
         createOrChangePasswordState.setPassword({
-          newValue: ``,
+          newValue: ``
         })
       }
     }

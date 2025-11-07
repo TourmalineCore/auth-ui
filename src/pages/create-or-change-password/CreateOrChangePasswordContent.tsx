@@ -25,14 +25,20 @@ export const CreateOrChangePasswordContent = observer(({
 }) => {
   const createOrChangePasswordState = useContext(CreateOrChangePasswordStateContext)
 
+  const { 
+    isChangeMode, 
+    password,
+    isTooltipVisible,
+  } = createOrChangePasswordState
+
   return (
     <div className="background-img-page create-or-change-password-page">
       <LoginForm
         onSubmit={handleFormSubmit}
-        buttonText="Login"
+        buttonText={isChangeMode ? `Done` : `Login`}
         buttonDisabled={validation.isValid}
-        title="Sign in"
-        subtitle="Create a password for"
+        title={isChangeMode ? `Change password` : `Sign in`}
+        subtitle={isChangeMode ? `Create a new password for` : `Create a password for`}
         email={login}
       >
         <div className="create-or-change-password-page__inner">
@@ -41,7 +47,7 @@ export const CreateOrChangePasswordContent = observer(({
             type="password"
             label="Create password"
             className="create-or-change-password-page__input"
-            value={createOrChangePasswordState.password}
+            value={password}
             onChange={
               (event: ChangeEvent<HTMLInputElement>) => createOrChangePasswordState
                 .setPassword({
@@ -53,7 +59,7 @@ export const CreateOrChangePasswordContent = observer(({
             autoComplete="off"
           />
 
-          {(createOrChangePasswordState.isTooltipVisible || createOrChangePasswordState.password) && validation.isValid && (
+          {(isTooltipVisible || password) && validation.isValid && (
             <Tooltip className="create-or-change-password-page__tooltip">
               <ul className="create-or-change-password-page__required-list">
                 <li className={clsx(`create-or-change-password-page__validation-item`, {
