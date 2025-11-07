@@ -1,15 +1,15 @@
 import { observer } from 'mobx-react-lite'
 import { useContext } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { CreatePasswordStateContext } from './state/CreatePasswordStateContext'
-import { CreatePasswordContent } from './CreatePasswordContent'
+import { CreateOrChangePasswordStateContext } from './state/CreateOrChangePasswordStateContext'
+import { CreateOrChangePasswordContent } from './CreateOrChangePasswordContent'
 import { api } from '../../common/api'
 import { useValidation } from '../../common/hooks/useValidation'
 import { setLogin } from '../../common/authService'
 import { useAuthenticated } from '../../common/hooks/useAuthenticated'
 
-export const CreatePasswordContainer = observer(() => {
-  const createPasswordState = useContext(CreatePasswordStateContext)
+export const CreateOrChangePasswordContainer = observer(() => {
+  const createOrChangePasswordState = useContext(CreateOrChangePasswordStateContext)
   const [
     searchParams,
   ] = useSearchParams()
@@ -25,7 +25,7 @@ export const CreatePasswordContainer = observer(() => {
     isContainsLowercaseLetter,
     isContainsSpecialCharacters,
     isValid,
-  } = useValidation(createPasswordState.password, {
+  } = useValidation(createOrChangePasswordState.password, {
     minLenght: 8,
     isContainsNumber: true,
     isContainsUppercaseLetter: true,
@@ -34,7 +34,7 @@ export const CreatePasswordContainer = observer(() => {
   })
 
   return (
-    <CreatePasswordContent
+    <CreateOrChangePasswordContent
       handleFormSubmit={handleFormSubmit}
       login={login}
       validation={{
@@ -51,22 +51,22 @@ export const CreatePasswordContainer = observer(() => {
   async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    if (createPasswordState.password) {
+    if (createOrChangePasswordState.password) {
       try {
         await api.post(`/auth/change-password`, {
           login,
           userResetPasswordToken,
-          password: createPasswordState.password,
+          password: createOrChangePasswordState.password,
         })
 
         await setLogin({
           login,
-          password: createPasswordState.password,
+          password: createOrChangePasswordState.password,
         })
       }
       catch (e) {
-        createPasswordState.setPassword({
-          newValue: ``
+        createOrChangePasswordState.setPassword({
+          newValue: ``,
         })
       }
     }

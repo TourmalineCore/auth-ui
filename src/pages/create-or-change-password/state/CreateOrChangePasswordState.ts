@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 
-export class CreatePasswordState {
+export class CreateOrChangePasswordState {
   private _password = ``
   private _isTooltipVisible = false
 
@@ -19,7 +19,7 @@ export class CreatePasswordState {
   setPassword({
     newValue,
   }: {
-    newValue: string
+    newValue: string,
   }) {
     this._password = newValue
   }
