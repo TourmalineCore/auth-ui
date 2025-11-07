@@ -5,6 +5,7 @@ describe(`CreateOrChangePasswordState`, () => {
   describe(`Initialization`, initializationTests)
   describe(`Password Management`, passwordManagementTests)
   describe(`Tooltip`, tooltipTests)
+  describe(`Is Password Change Mode`, isPasswordChangeModeTests)
 })
 
 function initializationTests() {
@@ -97,6 +98,42 @@ function tooltipTests() {
     createOrChangePasswordState.resetIsTooltipVisible()
 
     expect(createOrChangePasswordState.isTooltipVisible)
+      .to
+      .be
+      .false
+  })
+
+}
+
+function isPasswordChangeModeTests() {
+  let createOrChangePasswordState: CreateOrChangePasswordState
+
+  beforeEach(() => {
+    createOrChangePasswordState = new CreateOrChangePasswordState()
+  })
+
+  it(`
+  GIVEN default isChangeMode is false
+  WHEN setIsChangeMode is called
+  SHOULD update isChangeMode to true
+  `, () => {
+    createOrChangePasswordState.setIsChangeMode()
+
+    expect(createOrChangePasswordState.isChangeMode)
+      .to
+      .be
+      .true
+  })
+
+  it(`
+  GIVEN isChangeMode is true
+  WHEN resetIsChangeMode is called
+  SHOULD update isChangeMode to false
+  `, () => {
+    createOrChangePasswordState.setIsChangeMode()
+    createOrChangePasswordState.resetIsChangeMode()
+
+    expect(createOrChangePasswordState.isChangeMode)
       .to
       .be
       .false
