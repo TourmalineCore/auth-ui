@@ -10,15 +10,6 @@ const LOCAL_ENV_PORT = 30090
 // Set the port for the layout based on the environment
 const AUTH_PORT = process.env.NODE_ENV === `production` ? LOCAL_ENV_PORT : 4000
 
-// if (VITE_BASE_URL === undefined) set default local docker url
-// const LAYOUT_URL = process.env.VITE_BASE_URL ?? `http://localhost:4455`
-
-// for run in local docker use `/`, and for others use `/auth` path
-// const AUTH_PATH = LAYOUT_URL === `http://localhost:4455` ? `/` : `/auth`
-
-// for run in local docker use `http://localhost:4455/assets..`, and for others use `../layout/assets..` path
-// const LAYOUT_PATH = LAYOUT_URL === `http://localhost:4455` ? `` : `/layout`
-
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
   // Set the port on which the development server runs
