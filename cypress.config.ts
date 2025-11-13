@@ -9,7 +9,6 @@ export default defineConfig({
     baseUrl: process.env.CYPRESS_BASE_URL,
     env: {
       API_ROOT: process.env.API_ROOT,
-      VITE_BASE_URL: process.env.VITE_BASE_URL,
       USER_LOGIN: process.env.USER_LOGIN,
       USER_PASSWORD: process.env.USER_PASSWORD,
     },

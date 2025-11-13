@@ -18,4 +18,3 @@ releases:
           hostname: "{{ .StateValues.ingress.hostname }}"
       - extraConfigMapEnvVars:
           API_ROOT: "{{ .StateValues.extraConfigMapEnvVars.API_ROOT }}"
-          VITE_BASE_URL: "{{ .StateValues.extraConfigMapEnvVars.VITE_BASE_URL }}"
