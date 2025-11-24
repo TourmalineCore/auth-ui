@@ -15,4 +15,12 @@ export class ResetState {
   get isSuccessful() {
     return this._isSuccessful
   }
+
+  setLogin({
+    newValue,
+  }: {
+    newValue: string,
+  }) {
+    this._login = newValue
+  }
 }
