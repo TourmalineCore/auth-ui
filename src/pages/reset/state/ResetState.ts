@@ -23,4 +23,12 @@ export class ResetState {
   }) {
     this._login = newValue
   }
+
+  setIsSuccessful() {
+    this._isSuccessful = true
+  }
+
+  resetIsSuccessful() {
+    this._isSuccessful = false
+  }
 }
