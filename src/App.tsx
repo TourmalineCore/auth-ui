@@ -2,11 +2,10 @@ import {BrowserRouter,
   Routes,
   Route} from 'react-router-dom'
 
-import { AuthPage } from './features/auth/AuthPage'
-import { LogoutPage } from './features/logout/LogoutPage'
-import { ResetPage } from './features/reset/ResetPage'
-import { CreatePasswordPage } from './features/create/CreatePasswordPage'
-import { ChangePasswordPage } from './features/change/ChangePasswordPage'
+import { LogoutPage } from './pages/logout/LogoutPage'
+import { ResetPage } from './pages/reset/ResetPage'
+import { AuthPage } from './pages/auth/AuthPage'
+import { CreateOrChangePasswordPage } from './pages/create-or-change-password/CreateOrChangePasswordPage'
 
 export function App() {
   return (
@@ -26,11 +25,7 @@ export function App() {
         />
         <Route 
           path="/auth/create-password"
-          element={<CreatePasswordPage />} 
-        />
-        <Route 
-          path="/auth/change-password"
-          element={<ChangePasswordPage />} 
+          element={<CreateOrChangePasswordPage />} 
         />
       </Routes>
     </BrowserRouter>
