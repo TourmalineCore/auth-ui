@@ -25,7 +25,7 @@ export const ResetContainer = observer(() => {
       }
       catch (e) {
         resetState.setLogin({
-          newValue: ``
+          newValue: ``,
         })
       }
     }

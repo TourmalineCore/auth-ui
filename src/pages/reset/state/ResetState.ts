@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 
 export class ResetState {
-  private _login = ''
+  private _login = ``
   private _isSuccessful = false
 
   constructor() {

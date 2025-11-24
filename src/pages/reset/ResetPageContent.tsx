@@ -8,7 +8,7 @@ import emailIcon from '../../assets/img/icon-email.svg'
 export const ResetContent = observer(({
   handleFormSubmit,
 }: {
-  handleFormSubmit: (event: FormEvent<HTMLFormElement>) => void
+  handleFormSubmit: (event: FormEvent<HTMLFormElement>) => void,
 }) => {
   const resetState = useContext(ResetStateContext)
 
@@ -33,7 +33,7 @@ export const ResetContent = observer(({
           iconSrc={emailIcon}
           value={resetState.login}
           onChange={(event) => resetState.setLogin({
-            newValue: event.target.value
+            newValue: event.target.value,
           })}
         />
       </LoginForm>

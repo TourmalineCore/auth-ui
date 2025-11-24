@@ -1,14 +1,12 @@
 import '../../../../cypress/support/commands'
 import { ResetState } from './ResetState'
 
-
 describe(`ResetState`, () => {
   describe(`Initialization`, initializationTests)
   describe(`Login Management`, loginManagementTests)
   describe(`Successful State Management`, successfulStateTests)
  
 })
-
 
 function initializationTests() {
   let resetState: ResetState
@@ -24,7 +22,7 @@ function initializationTests() {
   `, () => {
     expect(resetState.login)
       .to
-      .equal('')
+      .equal(``)
     expect(resetState.isSuccessful)
       .to
       .be
@@ -50,7 +48,7 @@ function loginManagementTests() {
 
     expect(resetState.login)
       .to
-      .equal('test@tc.com')
+      .equal(`test@tc.com`)
   })
 
   it(`
@@ -68,7 +66,7 @@ function loginManagementTests() {
 
     expect(resetState.login)
       .to
-      .equal('test2@tc.com')
+      .equal(`test2@tc.com`)
   })
 }
 
