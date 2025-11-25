@@ -27,6 +27,10 @@ export function App() {
           path="/auth/create-password"
           element={<CreateOrChangePasswordPage />} 
         />
+        <Route 
+          path="/auth/change-password"
+          element={<CreateOrChangePasswordPage />} 
+        />
       </Routes>
     </BrowserRouter>
   )
