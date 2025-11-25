@@ -3,10 +3,10 @@ import { AuthState } from './AuthState'
 
 describe(`AuthState`, () => {
   describe(`Initialization`, initializationTests)
-  describe(`Form Data`, FormDataTests)
-  describe(`Form Validation`, FormValidationTests)
-  describe(`Error Message`, ErrorMessageTests)
-  describe(`Reset`, ResetTests)
+  describe(`Form Data`, formDataTests)
+  describe(`Form Validation`, formValidationTests)
+  describe(`Error Message`, errorMessageTests)
+  describe(`Reset`, resetTests)
 })
 
 function initializationTests() {
@@ -30,7 +30,7 @@ function initializationTests() {
   })
 }
 
-function FormDataTests() {
+function formDataTests() {
   const authState = new AuthState()
   
   it(`
@@ -52,7 +52,7 @@ function FormDataTests() {
   })
 }
 
-function FormValidationTests() {
+function formValidationTests() {
   const authState = new AuthState()
 
   it(`
@@ -96,7 +96,7 @@ function FormValidationTests() {
   })
 }
 
-function ErrorMessageTests() {
+function errorMessageTests() {
   const authState = new AuthState()
 
   it(`
@@ -107,11 +107,13 @@ function ErrorMessageTests() {
     const errorMessage = `Invalid credentials`
     authState.setErrorMessage(errorMessage)
     
-    expect(authState.errorMessage).to.equal(errorMessage)
+    expect(authState.errorMessage)
+      .to
+      .equal(errorMessage)
   })
 }
 
-function ResetTests() {
+function resetTests() {
   const authState = new AuthState()
 
   it(`
@@ -126,7 +128,11 @@ function ResetTests() {
 
     authState.resetPassword()
     
-    expect(authState.formData.login).to.equal(`test@example.com`)
-    expect(authState.formData.password).to.equal(``)
+    expect(authState.formData.login)
+      .to
+      .equal(`test@example.com`)
+    expect(authState.formData.password)
+      .to
+      .equal(``)
   })
 }

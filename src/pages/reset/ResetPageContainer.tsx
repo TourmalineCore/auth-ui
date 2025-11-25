@@ -2,8 +2,8 @@ import { FormEvent} from 'react'
 import { observer } from 'mobx-react-lite'
 import { useContext } from 'react'
 import { ResetStateContext } from './state/ResetStateContext'
-import { api } from '../../common/api'
 import { ResetContent } from './ResetPageContent'
+import { api } from '../../common/api'
 
 export const ResetContainer = observer(() => {
   const resetState = useContext(ResetStateContext)

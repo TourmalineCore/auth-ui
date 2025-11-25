@@ -5,7 +5,6 @@ describe(`ResetState`, () => {
   describe(`Initialization`, initializationTests)
   describe(`Login Management`, loginManagementTests)
   describe(`Successful State Management`, successfulStateTests)
- 
 })
 
 function initializationTests() {
