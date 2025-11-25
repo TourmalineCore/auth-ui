@@ -6,7 +6,6 @@ export default defineConfig({
     baseUrl: `http://localhost:30090`,
     env: {
       API_ROOT: `/api`,
-      VITE_BASE_URL: `http://localhost:30090`,
       USER_LOGIN: `ceo@tourmalinecore.com`,
       USER_PASSWORD: `cEoPa$$wo1d`,
     },

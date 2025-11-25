@@ -38,7 +38,6 @@ jobs:
             --state-values-set image.tag=sha-${{ github.sha }} 
             --state-values-set ingress.hostname=${{ secrets.DEV_HOST }}
             --state-values-set extraConfigMapEnvVars.API_ROOT='/api'
-            --state-values-set extraConfigMapEnvVars.VITE_BASE_URL=${{ secrets.BASE_URL }}
           helmfile-auto-init: "false"       
 
   e2e-test-prod:
@@ -62,7 +61,6 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_BASE_URL: ${{ secrets.DEV_BASE_URL }}
           API_ROOT: '/api'
-          VITE_BASE_URL: ${{ secrets.BASE_URL }}
           USER_LOGIN: ${{ secrets.DEV_USER_LOGIN }}
           USER_PASSWORD: ${{ secrets.DEV_USER_PASSWORD }}
 
