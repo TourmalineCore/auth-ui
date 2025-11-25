@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom'
 import { CreateOrChangePasswordStateContext } from './state/CreateOrChangePasswordStateContext'
 import { CreateOrChangePasswordContent } from './CreateOrChangePasswordContent'
 import { api } from '../../common/api'
-import { useValidation } from '../../common/hooks/useValidation'
 import { setLogin } from '../../common/authService'
 import { useAuthenticated } from '../../common/hooks/useAuthenticated'
 
@@ -23,33 +22,10 @@ export const CreateOrChangePasswordContainer = observer(() => {
   const login = searchParams.get(isChangeMode ? `corporateEmail` : `login`)
   const token = searchParams.get(isChangeMode ? `passwordResetToken` : `userResetPasswordToken`)
 
-  const {
-    minLenght,
-    isContainsNumber,
-    isContainsUppercaseLetter,
-    isContainsLowercaseLetter,
-    isContainsSpecialCharacters,
-    isValid,
-  } = useValidation(createOrChangePasswordState.password, {
-    minLenght: 8,
-    isContainsNumber: true,
-    isContainsUppercaseLetter: true,
-    isContainsLowercaseLetter: true,
-    isContainsSpecialCharacters: true,
-  })
-
   return (
     <CreateOrChangePasswordContent
       handleFormSubmit={handleFormSubmit}
       login={login}
-      validation={{
-        minLenght,
-        isContainsNumber,
-        isContainsUppercaseLetter,
-        isContainsLowercaseLetter,
-        isContainsSpecialCharacters,
-        isValid,
-      }}
     />
   )
 
