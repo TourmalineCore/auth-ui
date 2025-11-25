@@ -24,20 +24,20 @@ export const CreateOrChangePasswordContent = observer(({
     isTooltipVisible,
   } = createOrChangePasswordState
 
-    const {
-      minLenght,
-      isContainsNumber,
-      isContainsUppercaseLetter,
-      isContainsLowercaseLetter,
-      isContainsSpecialCharacters,
-      isValid,
-    } = useValidation(createOrChangePasswordState.password, {
-      minLenght: 8,
-      isContainsNumber: true,
-      isContainsUppercaseLetter: true,
-      isContainsLowercaseLetter: true,
-      isContainsSpecialCharacters: true,
-    })
+  const {
+    minLenght,
+    isContainsNumber,
+    isContainsUppercaseLetter,
+    isContainsLowercaseLetter,
+    isContainsSpecialCharacters,
+    isValid,
+  } = useValidation(createOrChangePasswordState.password, {
+    minLenght: 8,
+    isContainsNumber: true,
+    isContainsUppercaseLetter: true,
+    isContainsLowercaseLetter: true,
+    isContainsSpecialCharacters: true,
+  })
     
   return (
     <div className="background-img-page create-or-change-password-page">
