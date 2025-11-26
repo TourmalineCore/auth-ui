@@ -43,7 +43,7 @@ function passwordManagementTests() {
   SHOULD update password
   `, () => {
     createOrChangePasswordState.setPassword({
-      newValue: `password`,
+      password: `password`,
     })
 
     expect(createOrChangePasswordState.password)
@@ -57,10 +57,10 @@ function passwordManagementTests() {
   SHOULD update password
   `, () => {
     createOrChangePasswordState.setPassword({
-      newValue: `password1`,
+      password: `password1`,
     })
     createOrChangePasswordState.setPassword({
-      newValue: `password2`,
+      password: `password2`,
     })
 
     expect(createOrChangePasswordState.password)

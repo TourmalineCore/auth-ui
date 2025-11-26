@@ -33,7 +33,7 @@ export const ResetContent = observer(({
           iconSrc={emailIcon}
           value={resetState.login}
           onChange={(event) => resetState.setLogin({
-            newValue: event.target.value,
+            login: event.target.value,
           })}
         />
       </LoginForm>

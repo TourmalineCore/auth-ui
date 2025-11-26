@@ -17,11 +17,11 @@ export class ResetState {
   }
 
   setLogin({
-    newValue,
+    login,
   }: {
-    newValue: string,
+    login: string,
   }) {
-    this._login = newValue
+    this._login = login
   }
 
   setIsSuccessful() {

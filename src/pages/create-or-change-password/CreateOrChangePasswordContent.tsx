@@ -59,7 +59,7 @@ export const CreateOrChangePasswordContent = observer(({
             onChange={
               (event: ChangeEvent<HTMLInputElement>) => createOrChangePasswordState
                 .setPassword({
-                  newValue: event.target.value,
+                  password: event.target.value,
                 })
             }
             onFocus={() => createOrChangePasswordState.setIsTooltipVisible()}

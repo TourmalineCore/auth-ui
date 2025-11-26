@@ -22,11 +22,11 @@ export class CreateOrChangePasswordState {
   }
 
   setPassword({
-    newValue,
+    password,
   }: {
-    newValue: string,
+    password: string,
   }) {
-    this._password = newValue
+    this._password = password
   }
 
   setIsTooltipVisible() {

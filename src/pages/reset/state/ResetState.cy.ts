@@ -42,7 +42,7 @@ function loginManagementTests() {
   SHOULD update login
   `, () => {
     resetState.setLogin({
-      newValue: `test@tc.com`,
+      login: `test@tc.com`,
     })
 
     expect(resetState.login)
@@ -56,11 +56,11 @@ function loginManagementTests() {
   SHOULD update login to this value
   `, () => {
     resetState.setLogin({
-      newValue: `test@tc.com`,
+      login: `test@tc.com`,
     })
 
     resetState.setLogin({
-      newValue: `test2@tc.com`,
+      login: `test2@tc.com`,
     })
 
     expect(resetState.login)
