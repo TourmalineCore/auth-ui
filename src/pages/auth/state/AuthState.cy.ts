@@ -39,8 +39,10 @@ function formDataTests() {
   SHOULD update form data
   `, () => {
     authState.setFormData({ 
-      login: `test@example.com`,
-      password: `123`, 
+      formData: {
+        login: `test@example.com`,
+        password: `123`,
+      } 
     })
     
     expect(authState.formData.login)
@@ -72,7 +74,9 @@ function formValidationTests() {
   SHOULD return false
   `, () => {
     authState.setFormData({ 
-      login: `test@example.com`, 
+      formData: {
+        login: `test@example.com`, 
+      }
     })
     expect(authState.isFormValid)
       .to
@@ -86,8 +90,10 @@ function formValidationTests() {
   SHOULD return true
   `, () => {
     authState.setFormData({ 
-      login: `test@example.com`, 
-      password: `123`, 
+      formData: {
+        login: `test@example.com`, 
+        password: `123`, 
+      }
     })
     expect(authState.isFormValid)
       .to
@@ -105,7 +111,9 @@ function errorMessageTests() {
   SHOULD set errorMessage
   `, () => {
     const errorMessage = `Invalid credentials`
-    authState.setErrorMessage(errorMessage)
+    authState.setErrorMessage({
+      errorMessage: errorMessage
+    })
     
     expect(authState.errorMessage)
       .to
@@ -122,8 +130,10 @@ function resetTests() {
   SHOULD have empty string for password in state
   `, () => {
     authState.setFormData({ 
-      login: `test@example.com`, 
-      password: `123`, 
+      formData: {
+        login: `test@example.com`, 
+        password: `123`,
+      }
     })
 
     authState.resetPassword()

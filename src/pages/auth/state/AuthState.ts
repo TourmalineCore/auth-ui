@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 
-export interface AuthFormData {
+export type AuthFormData = {
   login: string,
   password: string,
 }
@@ -28,15 +28,23 @@ export class AuthState {
     return this._formData.login !== `` && this._formData.password !== ``
   }
 
-  setFormData(newValue: Partial<AuthFormData>) {
+  setFormData({ 
+    formData 
+  }: { 
+    formData: Partial<AuthFormData>
+  }) {
     this._formData = {
       ...this._formData,
-      ...newValue,
+      ...formData,
     }
   }
 
-  setErrorMessage(newValue: string) {
-    this._errorMessage = newValue
+  setErrorMessage({
+    errorMessage
+  }: {
+    errorMessage: string
+  }) {
+    this._errorMessage = errorMessage
   }
 
   resetPassword() {
