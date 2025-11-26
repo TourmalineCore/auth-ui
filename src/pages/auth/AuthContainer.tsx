@@ -22,7 +22,7 @@ export const AuthContainer = observer(() => {
     
     if (authState.isFormValid) {
       authState.setErrorMessage({
-        errorMessage: ``
+        errorMessage: ``,
       })
 
       try {
@@ -33,7 +33,7 @@ export const AuthContainer = observer(() => {
       }
       catch (e) {
         authState.setErrorMessage({
-          errorMessage: `Error: Invalid email or password. Check the correctness of the entered data.`
+          errorMessage: `Error: Invalid email or password. Check the correctness of the entered data.`,
         })
         authState.resetPassword()
       } 

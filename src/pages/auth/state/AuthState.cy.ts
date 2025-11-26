@@ -42,7 +42,7 @@ function formDataTests() {
       formData: {
         login: `test@example.com`,
         password: `123`,
-      } 
+      }, 
     })
     
     expect(authState.formData.login)
@@ -76,7 +76,7 @@ function formValidationTests() {
     authState.setFormData({ 
       formData: {
         login: `test@example.com`, 
-      }
+      },
     })
     expect(authState.isFormValid)
       .to
@@ -93,7 +93,7 @@ function formValidationTests() {
       formData: {
         login: `test@example.com`, 
         password: `123`, 
-      }
+      },
     })
     expect(authState.isFormValid)
       .to
@@ -112,7 +112,7 @@ function errorMessageTests() {
   `, () => {
     const errorMessage = `Invalid credentials`
     authState.setErrorMessage({
-      errorMessage: errorMessage
+      errorMessage: errorMessage,
     })
     
     expect(authState.errorMessage)
@@ -133,7 +133,7 @@ function resetTests() {
       formData: {
         login: `test@example.com`, 
         password: `123`,
-      }
+      },
     })
 
     authState.resetPassword()

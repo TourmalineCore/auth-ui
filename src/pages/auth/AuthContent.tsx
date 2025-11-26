@@ -47,8 +47,8 @@ export const AuthContent = observer(({
               onChange={
                 (event: ChangeEvent<HTMLInputElement>) => authState.setFormData({
                   formData: {
-                    login: event.target.value
-                  }
+                    login: event.target.value,
+                  },
                 })
               }
             />
@@ -62,8 +62,8 @@ export const AuthContent = observer(({
               onChange={
                 (event: ChangeEvent<HTMLInputElement>) => authState.setFormData({
                   formData: {
-                    password: event.target.value
-                  }
+                    password: event.target.value,
+                  },
                 })
               }
             />

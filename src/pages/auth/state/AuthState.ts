@@ -29,9 +29,9 @@ export class AuthState {
   }
 
   setFormData({ 
-    formData 
+    formData, 
   }: { 
-    formData: Partial<AuthFormData>
+    formData: Partial<AuthFormData>,
   }) {
     this._formData = {
       ...this._formData,
@@ -40,9 +40,9 @@ export class AuthState {
   }
 
   setErrorMessage({
-    errorMessage
+    errorMessage,
   }: {
-    errorMessage: string
+    errorMessage: string,
   }) {
     this._errorMessage = errorMessage
   }
