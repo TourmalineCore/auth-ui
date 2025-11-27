@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-
 import { authService } from '../../common/authService'
 
 export function LogoutPage() {
