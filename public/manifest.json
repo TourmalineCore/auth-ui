@@ -1,6 +1,6 @@
 {
-  "short_name": "React Admin Template",
-  "name": "React Admin Template",
+  "short_name": "Inner Circle",
+  "name": "IC",
   "icons": [
     {
       "src": "favicon.ico",
@@ -16,6 +16,12 @@
       "src": "icon512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "start_url": ".",
