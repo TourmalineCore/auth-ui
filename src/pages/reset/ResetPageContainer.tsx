@@ -19,7 +19,7 @@ export const ResetContainer = observer(() => {
 
     if (resetState.login) {
       try {
-        await api.post(`/auth/reset?corporateEmail=${resetState.login}@tourmalinecore.com`)
+        await api.post(`/reset?corporateEmail=${resetState.login}@tourmalinecore.com`)
 
         resetState.setIsSuccessful()
       }

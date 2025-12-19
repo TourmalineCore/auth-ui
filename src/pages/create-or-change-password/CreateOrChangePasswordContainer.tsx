@@ -35,14 +35,14 @@ export const CreateOrChangePasswordContainer = observer(() => {
     if (createOrChangePasswordState.password) {
       try {
         if (isChangeMode) {
-          await api.put(`/auth/change-password`, {
+          await api.put(`/change-password`, {
             corporateEmail: login,
             passwordResetToken: token,
             newPassword: createOrChangePasswordState.password,
           })
         }
         else {
-          await api.post(`/auth/change-password`, {
+          await api.post(`/change-password`, {
             login,
             userResetPasswordToken: token,
             password: createOrChangePasswordState.password,
