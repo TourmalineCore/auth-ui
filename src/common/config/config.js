@@ -1,3 +1,3 @@
 export const {
-  API_ROOT,
+  API_ROOT_URL,
 } = window.__ENV__
