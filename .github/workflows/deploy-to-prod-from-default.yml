@@ -24,11 +24,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy
+        # We use quotes because in other services we got a problems with vars without quotes
         run: |
-            helmfile cache cleanup && helmfile apply --suppress-diff --namespace ${{ secrets.INNER_CIRCLE_PROD_NAMESPACE }} -f ci/helmfile.yaml \
-            --state-values-set image.tag=sha-${{ github.sha }} \
-            --state-values-set ingress.hostname=${{ secrets.INNER_CIRCLE_PROD_HOSTNAME }} \
-            --state-values-set extraConfigMapEnvVars.API_ROOT_URL=${{ secrets.INNER_CIRCLE_PROD_AUTH_API_ROOT_URL }} > /dev/null 2>&1
+            helmfile cache cleanup && helmfile apply --suppress-diff --namespace "${{ secrets.INNER_CIRCLE_PROD_NAMESPACE }}" -f ci/helmfile.yaml \
+            --state-values-set image.tag="sha-${{ github.sha }}" \
+            --state-values-set ingress.hostname="${{ secrets.INNER_CIRCLE_PROD_HOSTNAME }}" \
+            --state-values-set extraConfigMapEnvVars.API_ROOT_URL="${{ secrets.INNER_CIRCLE_PROD_AUTH_API_ROOT_URL }}" > /dev/null 2>&1
 
   e2e-test-prod:
     runs-on: ubuntu-24.04
