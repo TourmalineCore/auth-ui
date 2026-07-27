@@ -3,8 +3,7 @@ export function isSafeReturnUrl({
   baseUrl = window.location.origin,
 }: {
   returnUrl: string,
-  // baseUrl used only to tests
-  // in addition to tests, this value should not be rewrite
+  // baseUrl is only needed for testing, there is no need to redefine it anywhere else
   baseUrl?: string,
 }) {
   try {
