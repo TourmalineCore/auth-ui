@@ -17,23 +17,11 @@ export const useAuthenticated = () => {
 
   const returnUrl = searchParams.get(`returnUrl`)
 
-  const safeReturnUrl = getSafeReturnUrl({
-    returnUrl,
-  })
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      window.location.href = safeReturnUrl
-    }
-  }, [
-    isAuthenticated,
-  ])
-
-  function getSafeReturnUrl({
+  const getSafeReturnUrl = ({
     returnUrl,
   }: {
     returnUrl: string | null,
-  }) {
+  }) => {
     if (!returnUrl) {
       return DEFAULT_RETURN_URL
     }
@@ -46,4 +34,14 @@ export const useAuthenticated = () => {
 
     return safeReturnUrl
   }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      window.location.href = getSafeReturnUrl({
+        returnUrl,
+      })
+    }
+  }, [
+    isAuthenticated,
+  ])
 }
